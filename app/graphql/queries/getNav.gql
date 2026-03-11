@@ -1,0 +1,23 @@
+query GetNav {
+  entries(section: "topNav", level: 1) {
+    id
+    title
+    ... on linkitem_Entry {
+      linkHandle {
+        title
+        label
+        url
+      }
+    }
+    children {
+      id
+      title
+      ... on linkitem_Entry {
+        linkHandle {
+          title
+          url
+        }
+      }
+    }
+  }
+}

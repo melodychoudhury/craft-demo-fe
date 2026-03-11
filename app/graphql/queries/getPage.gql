@@ -1,0 +1,30 @@
+query GetPage($uri: [String]) {
+  entry(section: "pages", uri: $uri) {
+    id
+    title
+    uri
+    ... on pagesEntry_Entry {
+      body
+      pagebuilder {
+        ... on hero_Entry {
+          id
+          title
+          typeHandle
+          body
+        }
+        ... on imageblock_Entry {
+          id
+          title
+          typeHandle
+          image {
+            url
+            focalPoint
+            alt
+            width
+            height
+          }
+        }
+      }
+    }
+  }
+}

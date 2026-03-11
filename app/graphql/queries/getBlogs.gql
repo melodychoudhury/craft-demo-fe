@@ -1,0 +1,10 @@
+ query GetBlogs {
+        entries(section: "blog") {
+            id
+            title
+            slug
+            ... on blogentry_Entry {
+            body
+            }
+        }
+    }

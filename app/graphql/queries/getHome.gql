@@ -1,0 +1,31 @@
+query GetHome($slug: [String]) {
+  entry(section: "home", slug: $slug) {
+    id
+    title
+    ... on homeentry_Entry {
+      body
+      pagebuilder {
+        __typename
+        ... on hero_Entry {
+          id
+          title
+          typeHandle
+          body
+        }
+        ... on imageblock_Entry {
+          id
+          title
+          typeHandle
+          image {
+            url
+            focalPoint
+            alt
+            width
+            height
+          }
+        }
+      }
+      
+    }
+  }
+}
