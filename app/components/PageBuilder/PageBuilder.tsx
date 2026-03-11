@@ -6,12 +6,20 @@ const REGISTRY = {
   imageblock: ImageBlock,      // use whatever the actual typeHandle is
 };
 
+
+
 export default function PageBuilder({ blocks = [] }) {
   return (
     <>
       {blocks.map((block) => {
         const key = block.typeHandle; // Craft-provided handle
         const Component = REGISTRY[key];
+
+        console.log(blocks.map((b) => ({
+  id: b.id,
+  typeHandle: b.typeHandle,
+  typename: b.__typename,
+})));
 
         if (!Component) {
           return (

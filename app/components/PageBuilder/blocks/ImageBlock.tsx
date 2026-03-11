@@ -10,7 +10,7 @@ export default function ImageBlock({block}) {
     const width = asset.width || 1200;   // fallback if width is null
     const height = asset.height || 800;  // fallback if height is null
     return (
-        <div>
+        <div className="container">
             {block.title ? <h3>{block.title}</h3> : null}
             <Image
                 src={asset.url}

@@ -1,7 +1,7 @@
 export default function HeroBlock() {
     return (
-        <div>
-            <h1>hero block</h1>
+        <div className="container">
+            <h1 className="bg-white">hero block</h1>
         </div>
     );
 }
