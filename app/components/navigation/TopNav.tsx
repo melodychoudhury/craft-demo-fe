@@ -1,6 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image"
+import Logo from "@/app/images/rolo-img.png"
+import { CircleHelp } from "lucide-react"
+
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,6 +15,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+
 
 function resolveHref(linkHandle: any): string {
   if (!linkHandle) return "#";
@@ -43,21 +49,16 @@ type NavItem = {
 
 export default function TopNav({ items = [] }: { items?: NavItem[] }) {
   return (
-    <nav className="dark">
-      <div className="bg-background py-2 text-foreground">
+    <nav>
+      <div>
         <div className="container mx-auto">
-          <NavigationMenu>
+          <NavigationMenu className="py-2">
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild
-                  className={navigationMenuTriggerStyle()}
-                >
-                  <Link href="/">
-                    Home
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
+        
+              <Link href="/">
+                <Image className="w-[40px] rounded-full" src={Logo} alt="Logo" />
+              </Link>
+                
               {items.map((item, index) => {
                 const href = resolveHref(item.linkHandle);
                 console.log("nav item", item.title, item.linkHandle, href);
@@ -102,6 +103,9 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                   </NavigationMenuItem>
                 );
               })}
+              <div className="flex">
+                <CircleHelp className="h-[30px]" />
+              </div>
             </NavigationMenuList>
           </NavigationMenu>
         </div>

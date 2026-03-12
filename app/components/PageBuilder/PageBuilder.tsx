@@ -16,10 +16,10 @@ export default function PageBuilder({ blocks = [] }) {
         const Component = REGISTRY[key];
 
         console.log(blocks.map((b) => ({
-  id: b.id,
-  typeHandle: b.typeHandle,
-  typename: b.__typename,
-})));
+        id: b.id,
+        typeHandle: b.typeHandle,
+        typename: b.__typename,
+      })));
 
         if (!Component) {
           return (
