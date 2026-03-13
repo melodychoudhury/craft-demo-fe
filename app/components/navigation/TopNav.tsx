@@ -65,14 +65,14 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
   const activeItem = items.find(
     (item, index) => String(item.id ?? `nav-${index}`) === openItem
   );
-  //cancels any delayed close
+  //cancels any delayed close for hover state
   const clearCloseTimeout = React.useCallback(() => {
     if (closeTimeout.current) {
       clearTimeout(closeTimeout.current);
       closeTimeout.current = null;
     }
   }, []);
-
+  //  cancels any pending close then sets new open item, when the user moves from one parent to another a new one opens cleanly
   const openMenu = React.useCallback(
     (key: string) => {
       clearCloseTimeout();
@@ -80,28 +80,31 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
     },
     [clearCloseTimeout]
   );
-
+  // cancels any pending close and then sets a pause for the over stateto prevent glitching on the ui
   const closeMenu = React.useCallback(() => {
     clearCloseTimeout();
     closeTimeout.current = setTimeout(() => {
       setOpenItem("");
     }, 120);
   }, [clearCloseTimeout]);
-
+// cancels any pending close, without the timeout for events that don't need the hover like closing the X icon, drop down link, click outside
   const closeMenuImmediately = React.useCallback(() => {
     clearCloseTimeout();
     setOpenItem("");
   }, [clearCloseTimeout]);
 
+  //start of outside click and escape handling
   React.useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
       if (!navRef.current) return;
+      // outside click, if the target is not in the nav wrapper close
       if (!navRef.current.contains(event.target as Node)) {
         closeMenuImmediately();
       }
     }
 
     function handleKeyDown(event: KeyboardEvent) {
+      //pressing escape will close the menu immediatley
       if (event.key === "Escape") {
         closeMenuImmediately();
       }
@@ -111,27 +114,36 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      //removes the event listeners with component unmounts to avoid memory leaks and event handlers
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [closeMenuImmediately]);
+ //end of outside click and escape handling
 
+ //clean up for the timer
   React.useEffect(() => {
     return () => clearCloseTimeout();
   }, [clearCloseTimeout]);
 
+  //add console log here
+
+  //navref detects click outside
   return (
     <div ref={navRef} className="relative border-b bg-background">
+      {/* START visabile nav bar */}
       <div
         className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3"
+        //stops pending close
         onMouseEnter={clearCloseTimeout}
+        //starts delayed close
         onMouseLeave={closeMenu}
       >
         <div className="flex items-center gap-6">
           <Link href="/" className="shrink-0">
             <Image className="w-[30px] rounded-full" src={Logo} alt="Logo" />
           </Link>
-
+          {/* Open item is reacts state */}
           <NavigationMenu
             value={openItem}
             onValueChange={setOpenItem}
@@ -139,16 +151,21 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
           >
             <NavigationMenuList>
               {items.map((item, index) => {
+                //gets url string
                 const href = resolveHref(item.linkHandle);
+                // makes each item unique 
                 const key = String(item.id ?? `nav-${index}`);
+                // used key to check whether the item is the active open one
                 const isOpen = openItem === key;
-
+                // LINKS WITHOUT CHILDREN
                 if (!item.children?.length) {
                   return (
                     <NavigationMenuItem key={key}>
                       <NavigationMenuLink
                         asChild
+                        //standard shadcn trigger styles to match the ui
                         className={navigationMenuTriggerStyle()}
+                        onClick={closeMenuImmediately}
                       >
                         <Link href={href}>{item.title}</Link>
                       </NavigationMenuLink>
@@ -158,15 +175,21 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
 
                 return (
                   <NavigationMenuItem
+                  //LINKS WITH CHILDREN
+                  // if item does have children it becomes a menu trigger
                     key={key}
                     value={key}
+                    // links the item with a controlled menu value
                     onMouseEnter={() => openMenu(key)}
                   >
+                    {/* On the chevron it tells screen readers which menu is open and if its expanded */}
                     <button
                       type="button"
                       aria-label={`Toggle ${item.title} menu`}
                       aria-expanded={isOpen}
+                      // if already open click closes it
                       onClick={() => setOpenItem(isOpen ? "" : key)}
+                      // Shadcn ui style
                       className={`${navigationMenuTriggerStyle()} flex items-center gap-1`}
                     >
                       <span>{item.title}</span>
@@ -206,14 +229,17 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
           </button>
         </div>
       </div>
-
+      {/* END visabile nav bar */}
       <div
         className={`absolute left-0 top-full z-50 w-full ${
+          //if its the active item and has children do these classes auto recieve mouse events, none it blocks clicks for content under it
           activeItem?.children?.length
             ? "pointer-events-auto"
             : "pointer-events-none"
         }`}
+        // clear the timer when mouse enters, 
         onMouseEnter={clearCloseTimeout}
+        // close menu when mouse leaves DEVMODE - COMMENT OUT TO REMOVE HOVER
         onMouseLeave={closeMenu}
       >
         <div
@@ -225,11 +251,13 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
         >
           <div className="mx-auto w-full max-w-7xl px-6 py-6">
             <div className="mb-6 flex items-center justify-between">
+              {/* This will switch the title depending on the active item */}
               <h2 className="text-lg font-semibold">{activeItem?.title}</h2>
 
               <button
                 type="button"
                 aria-label="Close menu"
+                //closes menu without timer when you click x
                 onClick={closeMenuImmediately}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-accent"
               >
@@ -238,8 +266,11 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
             </div>
 
             <ul className="grid grid-cols-3 gap-4">
+              {/* gets the children from active item and renders it */}
               {activeItem?.children?.map((child, childIndex) => {
+                //grab the child link
                 const childHref = resolveHref(child.linkHandle);
+                // create a unique react key
                 const childKey = child.id ?? `${openItem}-child-${childIndex}`;
 
                 return (
@@ -247,7 +278,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                     <Link
                       href={childHref}
                       onClick={closeMenuImmediately}
-                      className="flex min-h-[88px] items-center justify-center rounded-xl border px-4 py-6 text-center text-sm font-medium transition hover:bg-accent hover:text-accent-foreground"
+                      className=""
                     >
                       {child.title}
                     </Link>
