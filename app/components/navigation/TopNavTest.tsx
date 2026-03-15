@@ -15,8 +15,8 @@ const navItems = [
     title: "About",
     id: 4,
     children: [
-      { title: "tea", href: "/tea", id: 5 },
-      { title: "careers", href: "/careers", id: 6 },
+      { title: "Tea", href: "/tea", id: 5 },
+      { title: "Careers", href: "/careers", id: 6 },
     ],
   },
   { title: "Contact", href: "/contact", id: 7 },
@@ -24,66 +24,52 @@ const navItems = [
 
 export default function TopNavTest() {
   const [openItem, setOpenItem] = React.useState<string>("");
-  const closeTimeout = React.useRef<NodeJS.Timeout | null>(null);
-
-  const activeItem = navItems.find(
-    (item, index) => String(item.id ?? `nav-${index}`) === openItem
-  );
-
-  const clearCloseTimeout = React.useCallback(() => {
-    if (closeTimeout.current) {
-      clearTimeout(closeTimeout.current);
-      closeTimeout.current = null;
-    }
-  }, []);
-
-  const openMenu = React.useCallback(
-    (key: string) => {
-      clearCloseTimeout();
-      setOpenItem(key);
-    },
-    [clearCloseTimeout]
-  );
-
-  const closeMenu = React.useCallback(() => {
-    clearCloseTimeout();
-    closeTimeout.current = setTimeout(() => {
-      setOpenItem("");
-    }, 120);
-  }, [clearCloseTimeout]);
-
-  const closeMenuImmediately = React.useCallback(() => {
-    clearCloseTimeout();
-    setOpenItem("");
-  }, [clearCloseTimeout]);
-
-  React.useEffect(() => {
-    return () => clearCloseTimeout();
-  }, [clearCloseTimeout]);
+  // Look through navItems and find the one whose id matches openItem
+  const activeItem = navItems.find((item) => String(item.id) === openItem);
 
   return (
-    <nav
-      aria-label="main navigation"
-    >
+    <nav aria-label="main navigation" onMouseLeave={() => setOpenItem("")}>
       <ul>
-        {navItems.map((item, index) => {
-          
-          return (
-            <li>    
-                <button type="button">
-                  {item.title} V
-                </button>
-                <a href={item.href}>{item.title}</a>
-            </li>
-          );
+        {/* map the nav items */}
+        {navItems.map((item) => {
+          // has childrn condition, !! means true or false, does the item have children? yes? give it me
+          const hasChildren = !!item.children?.length;
+          // assign uniqure key 
+          const key = String(item.id);
+            return (
+              // return the link
+              <li key={item.id}
+              // if has children assign the open item the key
+                onMouseEnter={() => {
+                  if (hasChildren) {
+                    setOpenItem(key);
+                  }
+                }}
+              >
+                {/* if it has children assign it a button if not leave it as a normal link */}
+                { hasChildren ? (
+                  <button>{item.title}</button>
+                ) : (  
+                  <a href={item.href}>{item.title}</a> 
+                )}
+              </li>
+            )
         })}
       </ul>
 
-      <div
-        className="bg-[red]"
-      >
-        <h2>Magic nav</h2>
-      </div>
+      {/* render child links */}
+      {/* activeItem?.children means if activeItem exists read activeItem.children without ?. it could crash  */}
+       {/* && means if the left side displays true return the right side which is the data */}
+      {activeItem?.children && (
+        <div>
+          <ul>
+           {activeItem.children.map((child) => (
+              <li key={child.id}><a href={child.href}>{child.title}</a></li>
+           ))}
+          </ul>
+        </div>
+      )}
+     
     </nav>
   );
 }
