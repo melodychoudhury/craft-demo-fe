@@ -1258,6 +1258,7 @@ export type EntryInterfaceAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1323,6 +1324,7 @@ export type EntryInterfaceChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1388,6 +1390,7 @@ export type EntryInterfaceDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1446,6 +1449,7 @@ export type EntryInterfaceLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1512,6 +1516,7 @@ export type EntryInterfaceNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1585,6 +1590,7 @@ export type EntryInterfaceParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1643,6 +1649,7 @@ export type EntryInterfacePrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1718,6 +1725,7 @@ export type EntryRelationCriteriaInput = {
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   /** Narrows the query results to only elements that are descendants of another element in its structure provided by its ID. */
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Whether to only return entries that the user has permission to edit. */
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   /** Narrows the query results based on the entries’ expiry dates. */
@@ -1862,22 +1870,34 @@ export type Query = {
   assets?: Maybe<Array<Maybe<AssetInterface>>>;
   /** Entries within the “Blogs” section. */
   blogEntries?: Maybe<Array<Maybe<BlogSectionEntryUnion>>>;
+  /** Entries within the “Caravan Hook-Ups” section. */
+  caravanHookUpsEntries?: Maybe<Array<Maybe<CaravanHookUpsSectionEntryUnion>>>;
   /** This query is used to query for categories. */
   categories?: Maybe<Array<Maybe<CategoryInterface>>>;
   /** This query is used to query for a single category. */
   category?: Maybe<CategoryInterface>;
   /** This query is used to return the number of categories. */
   categoryCount: Scalars['Int']['output'];
+  /** Entries within the “Downloads” section. */
+  downloadsEntries?: Maybe<Array<Maybe<DownloadsSectionEntryUnion>>>;
+  /** Single entry within the “Downloads” section. */
+  downloadsEntry?: Maybe<DownloadsSectionEntryUnion>;
+  /** Entries within the “Downloads Picker” Matrix field. */
+  downloadsPickerFieldEntries?: Maybe<Array<Maybe<DownloadsPickerFieldEntryUnion>>>;
   /** This query is used to query for entries. */
   entries?: Maybe<Array<Maybe<EntryInterface>>>;
   /** This query is used to query for a single entry. */
   entry?: Maybe<EntryInterface>;
   /** This query is used to return the number of entries. */
   entryCount: Scalars['Int']['output'];
+  /** Entries within the “EV Charging” section. */
+  evChargingEntries?: Maybe<Array<Maybe<EvChargingSectionEntryUnion>>>;
   /** Entries within the “Home” section. */
   homeEntries?: Maybe<Array<Maybe<HomeSectionEntryUnion>>>;
   /** Single entry within the “Home” section. */
   homeEntry?: Maybe<HomeSectionEntryUnion>;
+  /** Entries within the “Marina Services” section. */
+  marinaServicesEntries?: Maybe<Array<Maybe<MarinaServicesSectionEntryUnion>>>;
   /** Entries within the “Page Builder” Matrix field. */
   pagebuilderFieldEntries?: Maybe<Array<Maybe<PagebuilderFieldEntryUnion>>>;
   /** Entries within the “Pages” section. */
@@ -2084,6 +2104,64 @@ export type QueryBlogEntriesArgs = {
 };
 
 
+export type QueryCaravanHookUpsEntriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type QueryCategoriesArgs = {
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
   ancestorOf?: InputMaybe<Scalars['Int']['input']>;
@@ -2231,6 +2309,182 @@ export type QueryCategoryCountArgs = {
 };
 
 
+export type QueryDownloadsEntriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryDownloadsEntryArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryDownloadsPickerFieldEntriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type QueryEntriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
@@ -2244,6 +2498,7 @@ export type QueryEntriesArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2309,6 +2564,7 @@ export type QueryEntryArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2374,6 +2630,7 @@ export type QueryEntryCountArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2426,7 +2683,7 @@ export type QueryEntryCountArgs = {
 };
 
 
-export type QueryHomeEntriesArgs = {
+export type QueryEvChargingEntriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
   ancestorOf?: InputMaybe<Scalars['Int']['input']>;
@@ -2484,7 +2741,125 @@ export type QueryHomeEntriesArgs = {
 };
 
 
+export type QueryHomeEntriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type QueryHomeEntryArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryMarinaServicesEntriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
   ancestorOf?: InputMaybe<Scalars['Int']['input']>;
@@ -2677,6 +3052,7 @@ export type QueryTopNavEntriesArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3239,6 +3615,7 @@ export type Blogentry_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3303,6 +3680,7 @@ export type Blogentry_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3367,6 +3745,7 @@ export type Blogentry_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3424,6 +3803,7 @@ export type Blogentry_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3489,6 +3869,7 @@ export type Blogentry_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3561,6 +3942,7 @@ export type Blogentry_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3618,6 +4000,1135 @@ export type Blogentry_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CaravanHookUpsSectionEntryUnion = Caravanentry_Entry;
+
+export type CaravanHookUps_Category = CategoryInterface & ElementInterface & {
+  __typename?: 'caravanHookUps_Category';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The category’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<CategoryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The category’s children. */
+  children: Array<CategoryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The category’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<CategoryInterface>;
+  downloadsPicker: Array<Maybe<DownloadsPicker_MatrixField>>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the group that contains the category. */
+  groupHandle: Scalars['String']['output'];
+  /** The ID of the group that contains the category. */
+  groupId: Scalars['Int']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<CategoryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<CategoryInterface>;
+  /** The category’s parent. */
+  parent?: Maybe<CategoryInterface>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<CategoryInterface>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type CaravanHookUps_Category_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type CaravanHookUps_CategoryAncestorsArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryChildrenArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryDescendantsArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryDownloadsPickerArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryLocalizedArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryNextArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryParentArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type CaravanHookUps_CategoryPrevArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Caravanentry_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'caravanentry_Entry';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  pagebuilder: Array<Maybe<Pagebuilder_MatrixField>>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Caravanentry_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Caravanentry_EntryAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryDescendantsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryLocalizedArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryNextArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryPagebuilderArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryParentArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Caravanentry_EntryPrevArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3813,6 +5324,7 @@ export type Downloadpicker_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3877,6 +5389,7 @@ export type Downloadpicker_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3941,6 +5454,7 @@ export type Downloadpicker_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4044,6 +5558,7 @@ export type Downloadpicker_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4109,6 +5624,7 @@ export type Downloadpicker_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4181,6 +5697,7 @@ export type Downloadpicker_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4226,6 +5743,195 @@ export type Downloadpicker_EntryParentArgs = {
 
 
 export type Downloadpicker_EntryPrevArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type DownloadsEntry_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'downloadsEntry_Entry';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  pagebuilder: Array<Maybe<Pagebuilder_MatrixField>>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type DownloadsEntry_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type DownloadsEntry_EntryAncestorsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
   ancestorOf?: InputMaybe<Scalars['Int']['input']>;
@@ -4289,7 +5995,704 @@ export type Downloadpicker_EntryPrevArgs = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+
+export type DownloadsEntry_EntryChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type DownloadsEntry_EntryDescendantsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type DownloadsEntry_EntryLocalizedArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type DownloadsEntry_EntryNextArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type DownloadsEntry_EntryPagebuilderArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type DownloadsEntry_EntryParentArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type DownloadsEntry_EntryPrevArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type DownloadsPickerFieldEntryUnion = Downloadpicker_Entry;
+
 export type DownloadsPicker_MatrixField = Downloadpicker_Entry;
+
+export type DownloadsSectionEntryUnion = DownloadsEntry_Entry;
+
+export type Downloads_Asset = AssetInterface & ElementInterface & {
+  __typename?: 'downloads_Asset';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Alternative text for the asset. */
+  alt?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the asset file was last modified. */
+  dateModified?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The file extension for the asset file. */
+  extension: Scalars['String']['output'];
+  /** The filename of the asset file. */
+  filename: Scalars['String']['output'];
+  /** The focal point represented as an array with `x` and `y` keys, or null if it’s not an image. */
+  focalPoint?: Maybe<Array<Maybe<Scalars['Float']['output']>>>;
+  /** The ID of the folder that the asset belongs to. */
+  folderId: Scalars['Int']['output'];
+  /** Returns the file’s format. */
+  format?: Maybe<Scalars['String']['output']>;
+  /** Whether a user-defined focal point is set on the asset. */
+  hasFocalPoint: Scalars['Boolean']['output'];
+  /** The height in pixels or null if it’s not an image. */
+  height?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** An `<img>` tag based on this asset. */
+  img?: Maybe<Scalars['String']['output']>;
+  /** The file kind. */
+  kind: Scalars['String']['output'];
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The file’s MIME type, if it can be determined. */
+  mimeType?: Maybe<Scalars['String']['output']>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<AssetInterface>;
+  /** The asset’s path in the volume. */
+  path: Scalars['String']['output'];
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<AssetInterface>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The file size in bytes. */
+  size?: Maybe<Scalars['String']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Returns a `srcset` attribute value based on the given widths or x-descriptors. */
+  srcset?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The full URL of the asset. This field accepts the same fields as the `transform` directive. */
+  url?: Maybe<Scalars['String']['output']>;
+  /** The ID of the volume that the asset belongs to. */
+  volumeId?: Maybe<Scalars['Int']['output']>;
+  /** The width in pixels or null if it’s not an image. */
+  width?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type Downloads_Asset_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Downloads_AssetFormatArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  handle?: InputMaybe<Scalars['String']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  immediately?: InputMaybe<Scalars['Boolean']['input']>;
+  interlace?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  quality?: InputMaybe<Scalars['Int']['input']>;
+  transform?: InputMaybe<Scalars['String']['input']>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type Downloads_AssetHeightArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  handle?: InputMaybe<Scalars['String']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  immediately?: InputMaybe<Scalars['Boolean']['input']>;
+  interlace?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  quality?: InputMaybe<Scalars['Int']['input']>;
+  transform?: InputMaybe<Scalars['String']['input']>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type Downloads_AssetNextArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Downloads_AssetPrevArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Downloads_AssetSrcsetArgs = {
+  sizes: Array<Scalars['String']['input']>;
+};
+
+
+export type Downloads_AssetUrlArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  handle?: InputMaybe<Scalars['String']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  immediately?: InputMaybe<Scalars['Boolean']['input']>;
+  interlace?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  quality?: InputMaybe<Scalars['Int']['input']>;
+  transform?: InputMaybe<Scalars['String']['input']>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type Downloads_AssetWidthArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  handle?: InputMaybe<Scalars['String']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  immediately?: InputMaybe<Scalars['Boolean']['input']>;
+  interlace?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  quality?: InputMaybe<Scalars['Int']['input']>;
+  transform?: InputMaybe<Scalars['String']['input']>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+};
 
 export type Downloadsblock_Entry = ElementInterface & EntryInterface & {
   __typename?: 'downloadsblock_Entry';
@@ -4435,6 +6838,7 @@ export type Downloadsblock_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4499,6 +6903,7 @@ export type Downloadsblock_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4563,6 +6968,7 @@ export type Downloadsblock_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4730,6 +7136,7 @@ export type Downloadsblock_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4795,6 +7202,7 @@ export type Downloadsblock_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4867,6 +7275,7 @@ export type Downloadsblock_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4924,6 +7333,1135 @@ export type Downloadsblock_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type EvChargingSectionEntryUnion = EvchargingEntry_Entry;
+
+export type EvCharging_Category = CategoryInterface & ElementInterface & {
+  __typename?: 'evCharging_Category';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The category’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<CategoryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The category’s children. */
+  children: Array<CategoryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The category’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<CategoryInterface>;
+  downloadsPicker: Array<Maybe<DownloadsPicker_MatrixField>>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the group that contains the category. */
+  groupHandle: Scalars['String']['output'];
+  /** The ID of the group that contains the category. */
+  groupId: Scalars['Int']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<CategoryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<CategoryInterface>;
+  /** The category’s parent. */
+  parent?: Maybe<CategoryInterface>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<CategoryInterface>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type EvCharging_Category_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type EvCharging_CategoryAncestorsArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryChildrenArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryDescendantsArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryDownloadsPickerArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryLocalizedArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryNextArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryParentArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvCharging_CategoryPrevArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type EvchargingEntry_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'evchargingEntry_Entry';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  pagebuilder: Array<Maybe<Pagebuilder_MatrixField>>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type EvchargingEntry_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type EvchargingEntry_EntryAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryDescendantsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryLocalizedArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryNextArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryPagebuilderArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryParentArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type EvchargingEntry_EntryPrevArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5119,6 +8657,7 @@ export type Hero_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5183,6 +8722,7 @@ export type Hero_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5247,6 +8787,7 @@ export type Hero_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5368,6 +8909,7 @@ export type Hero_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5433,6 +8975,7 @@ export type Hero_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5505,6 +9048,7 @@ export type Hero_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5562,6 +9106,7 @@ export type Hero_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5654,6 +9199,7 @@ export type Homeentry_Entry = ElementInterface & EntryInterface & {
   fieldId?: Maybe<Scalars['Int']['output']>;
   /** The ID of the entity */
   id?: Maybe<Scalars['ID']['output']>;
+  image: Array<Maybe<AssetInterface>>;
   /** Returns whether this is a draft. */
   isDraft?: Maybe<Scalars['Boolean']['output']>;
   /** Returns whether this is a revision. */
@@ -5759,6 +9305,7 @@ export type Homeentry_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5823,6 +9370,7 @@ export type Homeentry_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5887,6 +9435,7 @@ export type Homeentry_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5931,6 +9480,52 @@ export type Homeentry_EntryDescendantsArgs = {
 };
 
 
+export type Homeentry_EntryImageArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
 export type Homeentry_EntryLocalizedArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
@@ -5944,6 +9539,7 @@ export type Homeentry_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6009,6 +9605,7 @@ export type Homeentry_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6145,6 +9742,7 @@ export type Homeentry_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6202,6 +9800,7 @@ export type Homeentry_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6396,6 +9995,7 @@ export type Imageblock_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6460,6 +10060,7 @@ export type Imageblock_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6524,6 +10125,7 @@ export type Imageblock_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6627,6 +10229,7 @@ export type Imageblock_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6692,6 +10295,7 @@ export type Imageblock_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6764,6 +10368,7 @@ export type Imageblock_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6821,6 +10426,7 @@ export type Imageblock_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7146,6 +10752,7 @@ export type Linkitem_Entry = ElementInterface & EntryInterface & {
   fieldId?: Maybe<Scalars['Int']['output']>;
   /** The ID of the entity */
   id?: Maybe<Scalars['ID']['output']>;
+  image: Array<Maybe<AssetInterface>>;
   /** Returns whether this is a draft. */
   isDraft?: Maybe<Scalars['Boolean']['output']>;
   /** Returns whether this is a revision. */
@@ -7251,6 +10858,7 @@ export type Linkitem_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7315,6 +10923,7 @@ export type Linkitem_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7379,6 +10988,7 @@ export type Linkitem_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7423,6 +11033,52 @@ export type Linkitem_EntryDescendantsArgs = {
 };
 
 
+export type Linkitem_EntryImageArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
 export type Linkitem_EntryLocalizedArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   ancestorDist?: InputMaybe<Scalars['Int']['input']>;
@@ -7436,6 +11092,7 @@ export type Linkitem_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7501,6 +11158,7 @@ export type Linkitem_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7573,6 +11231,7 @@ export type Linkitem_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7630,6 +11289,7 @@ export type Linkitem_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7675,6 +11335,1134 @@ export type Linkitem_EntryPrevArgs = {
   title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type MarinaServicesEntry_Entry = ElementInterface & EntryInterface & {
+  __typename?: 'marinaServicesEntry_Entry';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  pagebuilder: Array<Maybe<Pagebuilder_MatrixField>>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type MarinaServicesEntry_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type MarinaServicesEntry_EntryAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryDescendantsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryLocalizedArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryNextArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryPagebuilderArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryParentArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServicesEntry_EntryPrevArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type MarinaServicesSectionEntryUnion = MarinaServicesEntry_Entry;
+
+export type MarinaServices_Category = CategoryInterface & ElementInterface & {
+  __typename?: 'marinaServices_Category';
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The category’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<CategoryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The category’s children. */
+  children: Array<CategoryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The category’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<CategoryInterface>;
+  downloadsPicker: Array<Maybe<DownloadsPicker_MatrixField>>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the group that contains the category. */
+  groupHandle: Scalars['String']['output'];
+  /** The ID of the group that contains the category. */
+  groupId: Scalars['Int']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<CategoryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<CategoryInterface>;
+  /** The category’s parent. */
+  parent?: Maybe<CategoryInterface>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<CategoryInterface>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type MarinaServices_Category_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type MarinaServices_CategoryAncestorsArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryChildrenArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryDescendantsArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryDownloadsPickerArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryLocalizedArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryNextArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryParentArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MarinaServices_CategoryPrevArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
   uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7829,6 +12617,7 @@ export type PagesEntry_EntryAncestorsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7893,6 +12682,7 @@ export type PagesEntry_EntryChildrenArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7957,6 +12747,7 @@ export type PagesEntry_EntryDescendantsArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -8014,6 +12805,7 @@ export type PagesEntry_EntryLocalizedArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8079,6 +12871,7 @@ export type PagesEntry_EntryNextArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8215,6 +13008,7 @@ export type PagesEntry_EntryParentArgs = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
@@ -8272,6 +13066,7 @@ export type PagesEntry_EntryPrevArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  downloadsAssets?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8332,12 +13127,16 @@ export type GetBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetBlogsQuery = { __typename?: 'Query', entries?: Array<
     | { __typename?: 'blogentry_Entry', body?: string | null, id?: string | null, title?: string | null, slug?: string | null }
+    | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, slug?: string | null }
+    | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, slug?: string | null }
+    | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, slug?: string | null }
+    | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, slug?: string | null }
     | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, slug?: string | null }
    | null> | null };
 
@@ -8348,16 +13147,23 @@ export type GetHomeQueryVariables = Exact<{
 
 export type GetHomeQuery = { __typename?: 'Query', entry?:
     | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+    | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+    | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+    | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'homeentry_Entry', body?: string | null, id?: string | null, title?: string | null, pagebuilder: Array<
         | { __typename: 'downloadsblock_Entry' }
         | { __typename: 'hero_Entry', id?: string | null, title?: string | null, typeHandle: string, body?: string | null }
-        | { __typename: 'imageblock_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<{ __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null } | null> }
+        | { __typename: 'imageblock_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null> }
        | null> }
     | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null }
+    | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
    | null };
 
@@ -8366,84 +13172,2080 @@ export type GetNavQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetNavQuery = { __typename?: 'Query', entries?: Array<
     | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+      > }
+    | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+      > }
+    | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+      > }
+    | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, label?: string | null, url?: string | null } | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+      > }
+    | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
     | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
-        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
-        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
-        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+        | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, id?: string | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null>, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
+        | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null, children: Array<
+            | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, linkHandle?: { __typename?: 'LinkData', title?: string | null, url?: string | null } | null }
+            | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null }
+            | { __typename?: 'pagesEntry_Entry', id?: string | null, title?: string | null }
+          > }
       > }
    | null> | null };
 
@@ -8454,21 +15256,28 @@ export type GetPageQueryVariables = Exact<{
 
 export type GetPageQuery = { __typename?: 'Query', entry?:
     | { __typename?: 'blogentry_Entry', id?: string | null, title?: string | null, uri?: string | null }
+    | { __typename?: 'caravanentry_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'downloadpicker_Entry', id?: string | null, title?: string | null, uri?: string | null }
+    | { __typename?: 'downloadsEntry_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'downloadsblock_Entry', id?: string | null, title?: string | null, uri?: string | null }
+    | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'homeentry_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'linkitem_Entry', id?: string | null, title?: string | null, uri?: string | null }
+    | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'pagesEntry_Entry', body?: string | null, id?: string | null, title?: string | null, uri?: string | null, pagebuilder: Array<
         | { __typename?: 'downloadsblock_Entry' }
         | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, typeHandle: string, body?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<{ __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null } | null> }
+        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<
+            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+           | null> }
        | null> }
    | null };
 
 
 export const GetBlogsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBlogs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"blog","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"blogentry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}}]}}]}}]}}]} as unknown as DocumentNode<GetBlogsQuery, GetBlogsQueryVariables>;
 export const GetHomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHome"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"home","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"homeentry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"pagebuilder"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetHomeQuery, GetHomeQueryVariables>;
-export const GetNavDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNav"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"topNav","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"level"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNavQuery, GetNavQueryVariables>;
+export const GetNavDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNav"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"topNav","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"level"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNavQuery, GetNavQueryVariables>;
 export const GetPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uri"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"pages","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uri"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"pagesEntry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"pagebuilder"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;

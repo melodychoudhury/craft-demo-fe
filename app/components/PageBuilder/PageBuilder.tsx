@@ -11,25 +11,20 @@ const REGISTRY = {
 export default function PageBuilder({ blocks = [] }) {
   return (
     <>
-      {blocks.map((block) => {
-        const key = block.typeHandle; // Craft-provided handle
-        const Component = REGISTRY[key];
-
-        console.log(blocks.map((b) => ({
-        id: b.id,
-        typeHandle: b.typeHandle,
-        typename: b.__typename,
-      })));
+      {blocks.map((block, index) => {
+        const typeKey = block.typeHandle;
+        const Component = REGISTRY[typeKey];
+        const blockKey = block.id ?? `${typeKey}-${index}`;
 
         if (!Component) {
           return (
-            <div key={block.id}>
+            <div key={blockKey}>
               Unknown block typeHandle: {block.typeHandle} ({block.__typename})
             </div>
           );
         }
 
-        return <Component key={block.id} block={block} />;
+        return <Component key={blockKey} block={block} />;
       })}
     </>
   );

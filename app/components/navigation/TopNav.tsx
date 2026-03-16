@@ -45,7 +45,6 @@ function resolveHref(linkHandle: any): string {
   return "#";
 }
 
-// each type for ts
 type NavItem = {
   id?: string | number;
   title: string;
@@ -126,6 +125,13 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
     return () => clearCloseTimeout();
   }, [clearCloseTimeout]);
 
+  //for the hover nav 
+  const imageChildren =
+    activeItem?.children?.filter((child) => child.image?.length) ?? [];
+
+  const textChildren =
+    activeItem?.children?.filter((child) => !child.image?.length) ?? [];
+
   //add console log here
 
   //navref detects click outside
@@ -139,10 +145,10 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
         //starts delayed close
         onMouseLeave={closeMenu}
       >
-        <div className="flex items-center gap-6">
-          <Link href="/" className="shrink-0">
+        <Link href="/" className="shrink-0">
             <Image className="w-[30px] rounded-full" src={Logo} alt="Logo" />
-          </Link>
+        </Link>
+        <div className="flex items-center gap-8">
           {/* Open item is reacts state */}
           <NavigationMenu
             value={openItem}
@@ -193,11 +199,11 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                       className={`${navigationMenuTriggerStyle()} flex items-center gap-1`}
                     >
                       <span>{item.title}</span>
-                      <ChevronDown
+                      {/* <ChevronDown
                         className={`h-4 w-4 transition-transform duration-200 ${
                           isOpen ? "rotate-180" : ""
                         }`}
-                      />
+                      /> */}
                     </button>
                   </NavigationMenuItem>
                 );
@@ -240,7 +246,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
         // clear the timer when mouse enters, 
         onMouseEnter={clearCloseTimeout}
         // close menu when mouse leaves DEVMODE - COMMENT OUT TO REMOVE HOVER
-        onMouseLeave={closeMenu}
+        // onMouseLeave={closeMenu}
       >
         <div
           className={`border-t bg-background shadow-lg transition-all duration-200 ease-out ${
@@ -264,28 +270,56 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                 <X className="h-5 w-5" />
               </button>
             </div>
+            
+            <div className={imageChildren ? "flex" : "aa"}>
+            {/* Column with images  */}
+            
+            <div className="CHILDREN-WITH-IMG">
+              {imageChildren.map((child, childIndex) => {
+                const asset = child.image?.[0];
+                const childKey = child.id ?? `image-child-${childIndex}`;
 
-            <ul className="grid grid-cols-3 gap-4">
-              {/* gets the children from active item and renders it */}
-              {activeItem?.children?.map((child, childIndex) => {
-                //grab the child link
-                const childHref = resolveHref(child.linkHandle);
-                // create a unique react key
-                const childKey = child.id ?? `${openItem}-child-${childIndex}`;
+                if (!asset?.url) return null;
 
                 return (
-                  <li key={childKey}>
-                    <Link
-                      href={childHref}
-                      onClick={closeMenuImmediately}
-                      className=""
-                    >
-                      {child.title}
-                    </Link>
-                  </li>
+                  <div key={childKey}>
+                    <Image
+                      src={asset.url}
+                      alt={child.title || "Navigation image"}
+                      width={100}
+                      height={100}
+                      unoptimized
+                    />
+                    <h3>{child.title}</h3>
+                  </div>
                 );
               })}
-            </ul>
+            </div>
+
+            {/* Column without images  */}
+
+            <div className="CHILDREN-WITHOUT-IMG">
+              {textChildren.map((child, childIndex) => {
+                const link = child.linkHandle;
+                console.log("childlink:", link);
+                const childKey = child.id ?? `link-child-${childIndex}`;
+
+
+                return (
+                  
+                    <div key={childKey}>
+                      <h3>{child.title}</h3>
+                    </div>
+                
+                );
+              })}
+            </div>  
+           </div>
+          
+
+
+            
+          
           </div>
         </div>
       </div>

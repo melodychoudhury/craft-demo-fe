@@ -2,6 +2,7 @@ query GetNav {
   entries(section: "topNav", level: 1) {
     id
     title
+
     ... on linkitem_Entry {
       linkHandle {
         title
@@ -9,13 +10,35 @@ query GetNav {
         url
       }
     }
+
     children {
       id
       title
+
       ... on linkitem_Entry {
+        image {
+            url
+            focalPoint
+            id
+            alt
+            width
+            height
+          }
         linkHandle {
           title
           url
+        }
+      }
+
+      children {
+        id
+        title
+
+        ... on linkitem_Entry {
+          linkHandle {
+            title
+            url
+          }
         }
       }
     }

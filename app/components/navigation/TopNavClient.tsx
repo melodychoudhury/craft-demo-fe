@@ -19,5 +19,7 @@ if (error) {
 
 const items = data?.entries ?? [];
 
+console.log("mapped items", items)
+
   return <TopNav items={items} />;
 }
