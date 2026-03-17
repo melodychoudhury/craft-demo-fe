@@ -19,9 +19,10 @@ query GetNav {
         image {
             url
             focalPoint
-            id
             alt
             width
+          id
+          title
             height
           }
         linkHandle {
@@ -40,6 +41,18 @@ query GetNav {
             url
           }
         }
+        
+        children {
+        id
+        title
+
+        ... on linkitem_Entry {
+          linkHandle {
+            title
+            url
+          }
+        }
+      }
       }
     }
   }

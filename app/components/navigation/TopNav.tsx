@@ -64,6 +64,10 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
   const activeItem = items.find(
     (item, index) => String(item.id ?? `nav-${index}`) === openItem
   );
+  // layout variables
+  // has items on child 
+  const ImageHasChildren = activeItem?.children.some((child) => child.image?.[0]?.url);
+
   //cancels any delayed close for hover state
   const clearCloseTimeout = React.useCallback(() => {
     if (closeTimeout.current) {
@@ -132,7 +136,14 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
   const textChildren =
     activeItem?.children?.filter((child) => !child.image?.length) ?? [];
 
+
+
+
+  const hasNestedChildren = activeItem?.children?.some((child) => (child.children?.length ?? 0) > 0);
+
+
   //add console log here
+
 
   //navref detects click outside
   return (
@@ -143,7 +154,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
         //stops pending close
         onMouseEnter={clearCloseTimeout}
         //starts delayed close
-        onMouseLeave={closeMenu}
+        //onMouseLeave={closeMenu}
       >
         <Link href="/" className="shrink-0">
             <Image className="w-[30px] rounded-full" src={Logo} alt="Logo" />
@@ -255,65 +266,95 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
               : "-translate-y-2 opacity-0"
           }`}
         >
-          <div className="mx-auto w-full max-w-7xl px-6 py-6">
-            <div className="mb-6 flex items-center justify-between">
-              {/* This will switch the title depending on the active item */}
-              <h2 className="text-lg font-semibold">{activeItem?.title}</h2>
-
-              <button
-                type="button"
-                aria-label="Close menu"
-                //closes menu without timer when you click x
-                onClick={closeMenuImmediately}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-accent"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
+          <div className="mx-auto w-full py-8 font-medium text-[14px] min-h-[200px]">
             
-            <div className={imageChildren ? "flex" : "aa"}>
+            <div className={`mx-auto flex w-full max-w-7xl items-center ${ImageHasChildren ? "justify-center" : ""}`}>
             {/* Column with images  */}
-            
-            <div className="CHILDREN-WITH-IMG">
-              {imageChildren.map((child, childIndex) => {
-                const asset = child.image?.[0];
-                const childKey = child.id ?? `image-child-${childIndex}`;
+            {ImageHasChildren && (
+              <ul className="flex gap-8 flex-wrap w-1/2">
+                {imageChildren.map((child, childIndex) => {
+                  const asset = child.image?.[0];
+                  const link = child.linkHandle;
+                  const childKey = child.id ?? `image-child-${childIndex}`;
 
-                if (!asset?.url) return null;
+                  if (!asset?.url) return null;
 
-                return (
-                  <div key={childKey}>
-                    <Image
-                      src={asset.url}
-                      alt={child.title || "Navigation image"}
-                      width={100}
-                      height={100}
-                      unoptimized
-                    />
-                    <h3>{child.title}</h3>
-                  </div>
-                );
-              })}
-            </div>
+                  return (
+                    <li onClick={closeMenuImmediately} key={childKey}>
+                      {link ? (
+                        <Link className="flex flex-col items-center" href={link}>
+                          <Image
+                            src={asset.url}
+                            alt={child.title || "Navigation image"}
+                            width={100}
+                            height={100}
+                            unoptimized
+                          />
+                          <span className="mt-4">{child.title}</span>
+                        </Link>
+                      ) : (
+                        <div className="flex flex-col items-center">
+                          <Image
+                              src={asset.url}
+                              alt={child.title || "Navigation image"}
+                              width={100}
+                              height={100}
+                              unoptimized
+                            />
+                            <span className="mt-4">{child.title}</span>
+                        </div>  
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )
+            }
 
             {/* Column without images  */}
 
-            <div className="CHILDREN-WITHOUT-IMG">
+            <ul className={ImageHasChildren ? "border-l border-gray-200 pl-8" : textChildren.length > 2 ? "grid grid-cols-4 mx-auto gap-44" : "gap-44"}>
               {textChildren.map((child, childIndex) => {
                 const link = child.linkHandle;
-                console.log("childlink:", link);
                 const childKey = child.id ?? `link-child-${childIndex}`;
-
+                const subChildren = child?.children ?? [];   
 
                 return (
-                  
-                    <div key={childKey}>
-                      <h3>{child.title}</h3>
-                    </div>
-                
+                    <li className="mt-2" key={childKey}>
+                      {link ? (
+                        <Link className="underline-smooth w-fit" onClick={closeMenuImmediately} href={link}>{child.title}</Link>
+                      ) : (
+                        <>
+                        <span>{child.title}</span>
+
+                        {subChildren.length > 0 && (
+                          <ul>
+                          {subChildren.map((subChild, subChildIndex) => {
+                            //make key
+                            const subChildKey = subChild.id ?? `link-child-${subChildIndex}`;
+                            //make link
+                            const subLink = subChild.linkHandle.url || subChild.linkHandle;
+
+                            return (
+                              <li key={subChildKey}>
+                                { subLink ? (
+                                  <Link href={subLink}>{subChild.title}</Link>
+                                ) : (
+                                  <span>{subChild.title}</span>
+                                )
+                                }
+                              </li>
+                            );
+                          })}
+                          </ul>
+                        )}
+
+                      </>
+                      )}
+                    </li>
                 );
               })}
-            </div>  
+            </ul>  
            </div>
           
 
