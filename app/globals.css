@@ -99,7 +99,7 @@ body {
 }
 
 @utility underline-smooth {
-  @apply border-b-2 border-transparent transition-all duration-75 ease-in-out hover:border-current;
+  @apply border-b-2 border-transparent transition-all duration-75 ease-in-out lg:hover:border-current;
 }
 
 

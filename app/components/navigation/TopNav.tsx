@@ -4,12 +4,12 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/app/images/rolo-img.png";
+import { resolveHref } from "@/app/lib/resolveHref";
+
 import {
   CircleHelp,
   Globe,
   CircleUserRound,
-  ChevronDown,
-  X,
 } from "lucide-react";
 
 import {
@@ -19,31 +19,6 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
-
-// converts craft into url string magic
-function resolveHref(linkHandle: any): string {
-  if (!linkHandle) return "#";
-  //if its "about" becomes "/about" if its "/about" stay "/about"
-  if (typeof linkHandle === "string") {
-    return linkHandle.startsWith("/") ? linkHandle : `/${linkHandle}`;
-  }
-  //if array return the first item
-  if (Array.isArray(linkHandle)) return resolveHref(linkHandle[0]);
-  // turns url into /about? instead of https://www.mel.com/about?
-  if (linkHandle.url) {
-    try {
-      const url = new URL(linkHandle.url);
-      return url.pathname + url.search + url.hash;
-    } catch {
-      return linkHandle.url;
-    }
-  }
-  // if craft gives { uri: "about" } turn it into /about
-  if (linkHandle.uri) return `/${linkHandle.uri}`;
-
-  return "#";
-}
 
 type NavItem = {
   id?: string | number;
@@ -64,9 +39,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
   const activeItem = items.find(
     (item, index) => String(item.id ?? `nav-${index}`) === openItem
   );
-  // layout variables
-  // has items on child 
-  const ImageHasChildren = activeItem?.children.some((child) => child.image?.[0]?.url);
+
 
   //cancels any delayed close for hover state
   const clearCloseTimeout = React.useCallback(() => {
@@ -136,13 +109,12 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
   const textChildren =
     activeItem?.children?.filter((child) => !child.image?.length) ?? [];
 
-
-
-
   const hasNestedChildren = activeItem?.children?.some((child) => (child.children?.length ?? 0) > 0);
 
+  const hasImageLinks = activeItem?.children.some((child) => (child.image?.length ?? 0) > 0);
 
-  //add console log here
+  // has items on child 
+  const ImageHasChildren = activeItem?.children.some((child) => child.image?.[0]?.url);
 
 
   //navref detects click outside
@@ -153,11 +125,11 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
         className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3"
         //stops pending close
         onMouseEnter={clearCloseTimeout}
-        //starts delayed close
-        //onMouseLeave={closeMenu}
+        //starts delayed close COMMENT OUT FOR DEV DEBUGGING
+        onMouseLeave={closeMenu} 
       >
         <Link href="/" className="shrink-0">
-            <Image className="w-[30px] rounded-full" src={Logo} alt="Logo" />
+            <Image  onClick={closeMenuImmediately} className="w-[30px] rounded-full" src={Logo} alt="Logo" />
         </Link>
         <div className="flex items-center gap-8">
           {/* Open item is reacts state */}
@@ -199,23 +171,14 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                     // links the item with a controlled menu value
                     onMouseEnter={() => openMenu(key)}
                   >
-                    {/* On the chevron it tells screen readers which menu is open and if its expanded */}
-                    <button
-                      type="button"
-                      aria-label={`Toggle ${item.title} menu`}
-                      aria-expanded={isOpen}
-                      // if already open click closes it
-                      onClick={() => setOpenItem(isOpen ? "" : key)}
-                      // Shadcn ui style
-                      className={`${navigationMenuTriggerStyle()} flex items-center gap-1`}
+                    <NavigationMenuLink
+                        asChild
+                        //standard shadcn trigger styles to match the ui
+                        className={navigationMenuTriggerStyle()}
+                        onClick={closeMenuImmediately}
                     >
-                      <span>{item.title}</span>
-                      {/* <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                      /> */}
-                    </button>
+                    <Link href={href}>{item.title}</Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 );
               })}
@@ -257,7 +220,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
         // clear the timer when mouse enters, 
         onMouseEnter={clearCloseTimeout}
         // close menu when mouse leaves DEVMODE - COMMENT OUT TO REMOVE HOVER
-        // onMouseLeave={closeMenu}
+        onMouseLeave={closeMenu}
       >
         <div
           className={`border-t bg-background shadow-lg transition-all duration-200 ease-out ${
@@ -266,15 +229,16 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
               : "-translate-y-2 opacity-0"
           }`}
         >
-          <div className="mx-auto w-full py-8 font-medium text-[14px] min-h-[200px]">
+          <div className="mx-auto w-full px-4 py-8 font-medium text-[14px] min-h-[200px]">
             
             <div className={`mx-auto flex w-full max-w-7xl items-center ${ImageHasChildren ? "justify-center" : ""}`}>
             {/* Column with images  */}
             {ImageHasChildren && (
-              <ul className="flex gap-8 flex-wrap w-1/2">
+              <ul className={textChildren.length > 0 ? "flex gap-8 flex-wrap w-1/2" : "flex gap-8 flex-wrap max-w-[800px]"}>
                 {imageChildren.map((child, childIndex) => {
                   const asset = child.image?.[0];
                   const link = child.linkHandle;
+                  const href = resolveHref(child.linkHandle);
                   const childKey = child.id ?? `image-child-${childIndex}`;
 
                   if (!asset?.url) return null;
@@ -282,15 +246,18 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                   return (
                     <li onClick={closeMenuImmediately} key={childKey}>
                       {link ? (
-                        <Link className="flex flex-col items-center" href={link}>
-                          <Image
-                            src={asset.url}
-                            alt={child.title || "Navigation image"}
-                            width={100}
-                            height={100}
-                            unoptimized
-                          />
-                          <span className="mt-4">{child.title}</span>
+                        <Link className="flex flex-col items-center group" href={href}>
+                          <div className="h-[100px]">
+                            <Image
+                              src={asset.url}
+                              alt={child.title || "Navigation image"}
+                              width={100}
+                              className="w-full h-full object-cover"
+                              height={100}
+                              unoptimized
+                            />
+                          </div>
+                          <span className="mt-4 underline-smooth lg:group-hover:border-current w-fit">{child.title}</span>
                         </Link>
                       ) : (
                         <div className="flex flex-col items-center">
@@ -312,33 +279,36 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
             }
 
             {/* Column without images  */}
-
-            <ul className={ImageHasChildren ? "border-l border-gray-200 pl-8" : textChildren.length > 2 ? "grid grid-cols-4 mx-auto gap-44" : "gap-44"}>
+            {textChildren.length > 0 && (
+            <ul className={ImageHasChildren ? "border-l border-gray-200 pl-8" : textChildren.length > 2 && hasNestedChildren ? "grid grid-cols-4 mx-auto gap-44" : "gap-44"}>
               {textChildren.map((child, childIndex) => {
                 const link = child.linkHandle;
                 const childKey = child.id ?? `link-child-${childIndex}`;
                 const subChildren = child?.children ?? [];   
+                const href = resolveHref(child.linkHandle);
 
                 return (
                     <li className="mt-2" key={childKey}>
                       {link ? (
-                        <Link className="underline-smooth w-fit" onClick={closeMenuImmediately} href={link}>{child.title}</Link>
+                        <Link className="underline-smooth w-fit" onClick={closeMenuImmediately} href={href}>{child.title}</Link>
                       ) : (
                         <>
-                        <span>{child.title}</span>
+                        <span className="text-gray-500 font-medium">{child.title}</span>
 
                         {subChildren.length > 0 && (
-                          <ul>
+                          <ul className="mt-4">
                           {subChildren.map((subChild, subChildIndex) => {
                             //make key
                             const subChildKey = subChild.id ?? `link-child-${subChildIndex}`;
                             //make link
                             const subLink = subChild.linkHandle.url || subChild.linkHandle;
 
+                            const href = resolveHref(subChild.linkHandle);
+
                             return (
-                              <li key={subChildKey}>
+                              <li className="mt-1 underline-smooth w-fit" key={subChildKey}>
                                 { subLink ? (
-                                  <Link href={subLink}>{subChild.title}</Link>
+                                  <Link onClick={closeMenuImmediately} href={href}>{subChild.title}</Link>
                                 ) : (
                                   <span>{subChild.title}</span>
                                 )
@@ -355,6 +325,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                 );
               })}
             </ul>  
+            )}
            </div>
           
 
