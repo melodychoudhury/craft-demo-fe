@@ -9,18 +9,57 @@ export default function ImageBlock({block}) {
     const alt = asset.alt || block.title || "";
     const width = asset.width || 1200;   // fallback if width is null
     const height = asset.height || 800;  // fallback if height is null
-    console.log("IMAGE BLOCK", block);
+
+    const imageSlider = block.imageSlider?.filter((item) => item.image?.length) ?? [];
+
+
     return (
         <div className="container">
-            {block.title ? <h3>{block.title}</h3> : null}
-            <Image
+
+            {block.title ? <h2>{block.title}</h2> : null} 
+
+           
+           {block.image?.length > 0 && (
+            <div className="h-[100px] w-[100px]">
+                <Image
                 src={asset.url}
                 alt={alt}
                 width={width}
                 height={height}
                 unoptimized
                 className="w-[300px] h-full"
-            />
+                />
+            </div>
+            )}
+            
+
+            {/* imgSlider matrix */}
+            
+            {imageSlider.length > 0 && (
+                imageSlider.map((item, sliderIndex) => {
+                    const key = item.id ?? `sliderImage-${sliderIndex}`;
+                
+                    return (
+                    // inner img map
+                    <div key={key} className="flex gap-2">
+                        {item.image.map((img, imageIndex) => {
+                            return (
+                                <div className="h-[100px] w-[100px]" key={imageIndex}>
+                                    <Image src={img.url}
+                                        alt={img.title || "slider img"}
+                                        width={100}
+                                        className="w-full h-full object-cover"
+                                        height={100}
+                                        unoptimized
+                                    />
+                                </div>
+                            )
+                        })}
+                        </div>
+                    );
+                })
+            )
+            }
         </div>
     );
 }
