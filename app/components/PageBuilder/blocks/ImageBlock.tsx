@@ -1,4 +1,14 @@
+"use client";
+
 import Image from "next/image";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function ImageBlock({block}) {
     //call block data 
@@ -13,10 +23,13 @@ export default function ImageBlock({block}) {
     const imageSlider = block.imageSlider?.filter((item) => item.image?.length) ?? [];
 
 
+
+
     return (
-        <div className="container">
+        <div>
 
             {block.title ? <h2>{block.title}</h2> : null} 
+            
 
            
            {block.image?.length > 0 && (
@@ -34,32 +47,46 @@ export default function ImageBlock({block}) {
             
 
             {/* imgSlider matrix */}
-            
-            {imageSlider.length > 0 && (
-                imageSlider.map((item, sliderIndex) => {
-                    const key = item.id ?? `sliderImage-${sliderIndex}`;
+           
                 
-                    return (
-                    // inner img map
-                    <div key={key} className="flex gap-2">
-                        {item.image.map((img, imageIndex) => {
+                    {imageSlider.length > 0 && (
+                        imageSlider.map((item, sliderIndex) => {
+                            const key = item.id ?? `sliderImage-${sliderIndex}`;
+                        
                             return (
-                                <div className="h-[100px] w-[100px]" key={imageIndex}>
-                                    <Image src={img.url}
-                                        alt={img.title || "slider img"}
-                                        width={100}
-                                        className="w-full h-full object-cover"
-                                        height={100}
-                                        unoptimized
-                                    />
-                                </div>
-                            )
-                        })}
+                            // inner img map
+                            <div key={key} className="relative w-full max-w-sm">
+                                <Carousel className="w-full">
+                                    <CarouselContent>
+                                        {item.image.map((img, imageIndex) => (
+                                        <CarouselItem key={imageIndex} className="basis-full">
+                                            <div className="h-full w-full">
+                                            <Image
+                                                src={img.url}
+                                                alt={img.title || "slider img"}
+                                                width={100}
+                                                height={100}
+                                                className="h-full w-full object-cover"
+                                                unoptimized
+                                            />
+                                            </div>
+                                        </CarouselItem>
+                                        ))}
+                                    </CarouselContent>
+                                    <div className="flex justify-center">
+                                        <CarouselPrevious className="relative left-[initial] block" />
+                                        <CarouselNext className="relative left-[initial] block" />
+                                    </div>
+                                </Carousel>
                         </div>
-                    );
-                })
-            )
-            }
+                           
+                               
+                            );
+                        })
+                    )
+                    }
+               
+               
         </div>
     );
 }

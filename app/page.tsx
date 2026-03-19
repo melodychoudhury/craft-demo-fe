@@ -20,7 +20,7 @@ export default function Home() {
   if (!entry) return <p>No entry found</p>;
 
   return (
-    <div className="layout-global">
+    <div>
         <h2>{entry.title}</h2>
         <p>{entry.body}</p>
         <PageBuilder blocks={blocks} />
