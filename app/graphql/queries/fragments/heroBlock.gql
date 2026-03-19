@@ -1,0 +1,7 @@
+fragment heroBlock on hero_Entry {
+        __typename
+          id
+          title
+          typeHandle
+          body
+        }

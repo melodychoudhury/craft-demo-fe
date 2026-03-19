@@ -1464,6 +1464,7 @@ export type EntryInterfaceLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1531,6 +1532,7 @@ export type EntryInterfaceNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1664,6 +1666,7 @@ export type EntryInterfacePrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1752,6 +1755,7 @@ export type EntryRelationCriteriaInput = {
   /** Sets the limit for paginated results. */
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results to only the entry that comes immediately after another element in its structure, provided by its ID. */
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   /** Narrows the query results to elements that do not relate to the provided element IDs. */
@@ -2515,6 +2519,7 @@ export type QueryEntriesArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2581,6 +2586,7 @@ export type QueryEntryArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2647,6 +2653,7 @@ export type QueryEntryCountArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2869,6 +2876,7 @@ export type QueryImageSliderFieldEntriesArgs = {
   authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
@@ -2884,6 +2892,8 @@ export type QueryImageSliderFieldEntriesArgs = {
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -3879,6 +3889,7 @@ export type Blogentry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -3945,6 +3956,7 @@ export type Blogentry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -4076,6 +4088,7 @@ export type Blogentry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -4943,6 +4956,7 @@ export type Caravanentry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5009,6 +5023,7 @@ export type Caravanentry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5204,6 +5219,7 @@ export type Caravanentry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5634,6 +5650,7 @@ export type Downloadpicker_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5700,6 +5717,7 @@ export type Downloadpicker_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5831,6 +5849,7 @@ export type Downloadpicker_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -6215,6 +6234,7 @@ export type DownloadsEntry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -6281,6 +6301,7 @@ export type DownloadsEntry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -6476,6 +6497,7 @@ export type DownloadsEntry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -7212,6 +7234,7 @@ export type Downloadsblock_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -7278,6 +7301,7 @@ export type Downloadsblock_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -7409,6 +7433,7 @@ export type Downloadsblock_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -8276,6 +8301,7 @@ export type EvchargingEntry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -8342,6 +8368,7 @@ export type EvchargingEntry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -8537,6 +8564,7 @@ export type EvchargingEntry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -8985,6 +9013,7 @@ export type Hero_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -9051,6 +9080,7 @@ export type Hero_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -9182,6 +9212,7 @@ export type Hero_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -9615,6 +9646,7 @@ export type Homeentry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -9681,6 +9713,7 @@ export type Homeentry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -9876,6 +9909,7 @@ export type Homeentry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -9925,6 +9959,7 @@ export type Image_Entry = ElementInterface & EntryInterface & {
   ancestors: Array<EntryInterface>;
   /** Whether the element is archived. */
   archived?: Maybe<Scalars['Boolean']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
   /** Returns the entry’s canonical ID. */
   canonicalId?: Maybe<Scalars['Int']['output']>;
   /** Returns the entry’s canonical UUID. */
@@ -9968,6 +10003,8 @@ export type Image_Entry = ElementInterface & EntryInterface & {
   level?: Maybe<Scalars['Int']['output']>;
   /** The element’s left position within its structure. */
   lft?: Maybe<Scalars['Int']['output']>;
+  linkHandle?: Maybe<LinkData>;
+  linkHandle2?: Maybe<LinkData>;
   /** The same element in other locales. */
   localized: Array<EntryInterface>;
   /** Returns the next element relative to this one, from a given set of criteria. */
@@ -10309,6 +10346,7 @@ export type Image_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -10375,6 +10413,7 @@ export type Image_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -10506,6 +10545,7 @@ export type Image_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -10916,6 +10956,7 @@ export type Imageblock_EntryImageSliderArgs = {
   authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   before?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
@@ -10933,6 +10974,8 @@ export type Imageblock_EntryImageSliderArgs = {
   leaves?: InputMaybe<Scalars['Boolean']['input']>;
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -10999,6 +11042,7 @@ export type Imageblock_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -11065,6 +11109,7 @@ export type Imageblock_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -11196,6 +11241,7 @@ export type Imageblock_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -11862,6 +11908,7 @@ export type Linkitem_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -11928,6 +11975,7 @@ export type Linkitem_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -12059,6 +12107,7 @@ export type Linkitem_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -12443,6 +12492,7 @@ export type MarinaServicesEntry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -12509,6 +12559,7 @@ export type MarinaServicesEntry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -12704,6 +12755,7 @@ export type MarinaServicesEntry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -13575,6 +13627,7 @@ export type PagesEntry_EntryLocalizedArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -13641,6 +13694,7 @@ export type PagesEntry_EntryNextArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -13836,6 +13890,7 @@ export type PagesEntry_EntryPrevArgs = {
   level?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   linkHandle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  linkHandle2?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -13877,6 +13932,16 @@ export type PagesSectionEntryUnion = PagesEntry_Entry;
 
 export type TopNavSectionEntryUnion = Linkitem_Entry;
 
+export type HeroBlockFragment = { __typename: 'hero_Entry', id?: string | null, title?: string | null, typeHandle: string, body?: string | null } & { ' $fragmentName'?: 'HeroBlockFragment' };
+
+export type ImageBlockFragment = { __typename: 'imageblock_Entry', id?: string | null, typeHandle: string, image: Array<
+    | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+    | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+   | null>, imageSlider: Array<{ __typename: 'image_Entry', id?: string | null, title?: string | null, typeHandle: string, body?: string | null, linkHandle?: { __typename?: 'LinkData', label?: string | null, url?: string | null } | null, linkHandle2?: { __typename?: 'LinkData', label?: string | null, url?: string | null } | null, image: Array<
+      | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+      | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
+     | null> } | null> } & { ' $fragmentName'?: 'ImageBlockFragment' };
+
 export type GetBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -13910,15 +13975,15 @@ export type GetHomeQuery = { __typename?: 'Query', entry?:
     | { __typename?: 'evchargingEntry_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'hero_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'homeentry_Entry', body?: string | null, id?: string | null, title?: string | null, pagebuilder: Array<
-        | { __typename: 'downloadsblock_Entry' }
-        | { __typename: 'hero_Entry', id?: string | null, title?: string | null, typeHandle: string, body?: string | null }
-        | { __typename: 'imageblock_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<
-            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
-            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
-           | null>, imageSlider: Array<{ __typename: 'image_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<
-              | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
-              | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
-             | null> } | null> }
+        | { __typename?: 'downloadsblock_Entry' }
+        | (
+          { __typename?: 'hero_Entry' }
+          & { ' $fragmentRefs'?: { 'HeroBlockFragment': HeroBlockFragment } }
+        )
+        | (
+          { __typename?: 'imageblock_Entry' }
+          & { ' $fragmentRefs'?: { 'ImageBlockFragment': ImageBlockFragment } }
+        )
        | null> }
     | { __typename?: 'image_Entry', id?: string | null, title?: string | null }
     | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null }
@@ -47311,16 +47376,20 @@ export type GetPageQuery = { __typename?: 'Query', entry?:
     | { __typename?: 'marinaServicesEntry_Entry', id?: string | null, title?: string | null, uri?: string | null }
     | { __typename?: 'pagesEntry_Entry', body?: string | null, id?: string | null, title?: string | null, uri?: string | null, pagebuilder: Array<
         | { __typename?: 'downloadsblock_Entry' }
-        | { __typename?: 'hero_Entry', id?: string | null, title?: string | null, typeHandle: string, body?: string | null }
-        | { __typename?: 'imageblock_Entry', id?: string | null, title?: string | null, typeHandle: string, image: Array<
-            | { __typename?: 'downloads_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
-            | { __typename?: 'images_Asset', url?: string | null, focalPoint?: Array<number | null> | null, alt?: string | null, width?: number | null, height?: number | null }
-           | null> }
+        | (
+          { __typename?: 'hero_Entry' }
+          & { ' $fragmentRefs'?: { 'HeroBlockFragment': HeroBlockFragment } }
+        )
+        | (
+          { __typename?: 'imageblock_Entry' }
+          & { ' $fragmentRefs'?: { 'ImageBlockFragment': ImageBlockFragment } }
+        )
        | null> }
    | null };
 
-
+export const HeroBlockFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"heroBlock"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}}]} as unknown as DocumentNode<HeroBlockFragment, unknown>;
+export const ImageBlockFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ImageBlock"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imageSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"image_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle2"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ImageBlockFragment, unknown>;
 export const GetBlogsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBlogs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"blog","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"blogentry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}}]}}]}}]}}]} as unknown as DocumentNode<GetBlogsQuery, GetBlogsQueryVariables>;
-export const GetHomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHome"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"home","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"homeentry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"pagebuilder"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imageSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"image_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetHomeQuery, GetHomeQueryVariables>;
+export const GetHomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHome"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"home","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"homeentry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"pagebuilder"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"heroBlock"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ImageBlock"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"heroBlock"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ImageBlock"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imageSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"image_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle2"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetHomeQuery, GetHomeQueryVariables>;
 export const GetNavDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNav"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entries"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"topNav","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"level"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"linkitem_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNavQuery, GetNavQueryVariables>;
-export const GetPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uri"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"pages","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uri"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"pagesEntry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"pagebuilder"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
+export const GetPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uri"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entry"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"section"},"value":{"kind":"StringValue","value":"pages","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uri"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"pagesEntry_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"pagebuilder"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"heroBlock"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ImageBlock"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"heroBlock"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"hero_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ImageBlock"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"imageblock_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imageSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"image_Entry"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"typeHandle"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkHandle2"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"focalPoint"}},{"kind":"Field","name":{"kind":"Name","value":"alt"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;

@@ -21,8 +21,7 @@ export default function Home() {
 
   return (
     <div>
-        <h2>{entry.title}</h2>
-        <p>{entry.body}</p>
+        <p>{entry.body ? <h1>{entry.body}</h1> : null}</p>
         <PageBuilder blocks={blocks} />
     </div>
   );

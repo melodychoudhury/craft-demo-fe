@@ -1,0 +1,39 @@
+fragment ImageBlock on imageblock_Entry {
+          __typename
+          id
+          typeHandle
+
+          image {
+            url
+            focalPoint
+            alt
+            width
+            height
+          }
+
+          imageSlider {
+            __typename
+
+            ... on image_Entry {
+              id
+              title
+              typeHandle
+              body
+              linkHandle {
+                    label
+                    url
+               }
+               linkHandle2 {
+                    label
+                    url
+                }
+              image {
+                url
+                focalPoint
+                alt
+                width
+                height
+              }
+            }
+          }
+        }

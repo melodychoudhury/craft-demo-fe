@@ -1,6 +1,11 @@
 "use client";
-
+import * as React from "react"
 import Image from "next/image";
+import Fade from "embla-carousel-fade"
+import Play from "embla-carousel-autoplay"
+import Link from "next/link";
+import { resolveHref } from "@/app/lib/resolveHref";
+import TwoButtons from "../../ui/twoButtons";
 
 import {
   Carousel,
@@ -8,85 +13,89 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel"
 
 export default function ImageBlock({block}) {
-    //call block data 
-    const asset = Array.isArray(block.image) ? block.image[0] : block.image;
-    //if theres no image url return null 
-    if (!asset?.url) return null;
-    //Fall backs to prevent errors 
-    const alt = asset.alt || block.title || "";
-    const width = asset.width || 1200;   // fallback if width is null
-    const height = asset.height || 800;  // fallback if height is null
-
-    const imageSlider = block.imageSlider?.filter((item) => item.image?.length) ?? [];
-
-
-
-
-    return (
-        <div>
-
-            {block.title ? <h2>{block.title}</h2> : null} 
-            
-
-           
-           {block.image?.length > 0 && (
-            <div className="h-[100px] w-[100px]">
-                <Image
-                src={asset.url}
-                alt={alt}
-                width={width}
-                height={height}
-                unoptimized
-                className="w-[300px] h-full"
-                />
-            </div>
-            )}
-            
-
-            {/* imgSlider matrix */}
-           
-                
-                    {imageSlider.length > 0 && (
-                        imageSlider.map((item, sliderIndex) => {
-                            const key = item.id ?? `sliderImage-${sliderIndex}`;
+     const imageSlider = block.imageSlider?.filter((item) => item.image?.length) ?? [];
+     
+         //for carousel dots
+         const [api, setApi] = React.useState<CarouselApi>()
+         const [current, setCurrent] = React.useState(0)
+         const [count, setCount] = React.useState(0)
+         React.useEffect(() => {
+             if (!api) return
+     
+             setCount(api.scrollSnapList().length)
+             setCurrent(api.selectedScrollSnap())
+     
+             api.on("select", () => {
+             setCurrent(api.selectedScrollSnap())
+             })
+         }, [api])
+       
+        return (
+            <div>
+                <Carousel setApi={setApi} plugins={[Fade(), Play()]} opts={{ loop: true }} className="relative bg-black">
+                    <CarouselContent>
+                        {imageSlider.map((item, sliderIndex) => {
+                            const link = item.linkHandle?.url ? item.linkHandle?.url : "no-link";
+                            const linkSecondary = item.linkHandle2?.url ? item.linkHandle2?.url : "no-link";
+                            const imgList = item.image;
                         
                             return (
-                            // inner img map
-                            <div key={key} className="relative w-full max-w-sm">
-                                <Carousel className="w-full">
-                                    <CarouselContent>
-                                        {item.image.map((img, imageIndex) => (
-                                        <CarouselItem key={imageIndex} className="basis-full">
-                                            <div className="h-full w-full">
-                                            <Image
-                                                src={img.url}
-                                                alt={img.title || "slider img"}
-                                                width={100}
-                                                height={100}
-                                                className="h-full w-full object-cover"
-                                                unoptimized
+                                <CarouselItem className="basis-full h-full pl-0 transition-opacity duration-500 ease-in-out">
+                                    <div className="h-[600px] w-full relative" key={item.id ?? `sliderImage-${sliderIndex}`}>
+                                        {imgList.map((img, imgIndex) => {
+                                            return (
+                                                <div className="h-[600px] w-full bg-black relative" key={img.id ?? `img-${imgIndex}`}>
+                                                    <Image
+                                                        src={img.url}
+                                                        alt={img.title || "slider img"}
+                                                        width={800}
+                                                        height={1000}
+                                                        className="h-full w-full object-cover"
+                                                        unoptimized
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                        <div className="absolute z-10 text-white top-0 flex justify-center flex-col w-full items-center">
+                                            <h3>{item.title}</h3>
+                                            <p>{item.body}</p>
+                                            <TwoButtons
+                                                link={link}
+                                                label={item.linkHandle?.label}
+                                                linkSecondary={linkSecondary}
+                                                labelSecondary={item.linkHandle2?.label}
                                             />
-                                            </div>
-                                        </CarouselItem>
-                                        ))}
-                                    </CarouselContent>
-                                    <div className="flex justify-center">
-                                        <CarouselPrevious className="relative left-[initial] block" />
-                                        <CarouselNext className="relative left-[initial] block" />
+                                        </div>
                                     </div>
-                                </Carousel>
-                        </div>
-                           
-                               
+                                </CarouselItem>
                             );
-                        })
-                    )
-                    }
-               
-               
-        </div>
-    );
+                        })}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                    <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+                        {Array.from({ length: count }).map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => api?.scrollTo(index)}
+                                className={`h-2.5 w-2.5 rounded-full transition-opacity ${
+                                current === index
+                                ? "bg-white opacity-100"
+                                : "bg-white/50 opacity-60"
+                                }`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                </Carousel>
+            </div>
+        );
+
+    
 }
+
+
