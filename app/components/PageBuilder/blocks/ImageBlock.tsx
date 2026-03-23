@@ -44,7 +44,7 @@ export default function ImageBlock({block}) {
                             const imgList = item.image;
                         
                             return (
-                                <CarouselItem className="basis-full h-full pl-0 transition-opacity duration-500 ease-in-out">
+                                <CarouselItem className="basis-full h-full pl-0 transition-opacity duration-500 ease-in-out relative dark-overlay">
                                     <div className="h-[600px] w-full relative" key={item.id ?? `sliderImage-${sliderIndex}`}>
                                         {imgList.map((img, imgIndex) => {
                                             return (
@@ -60,15 +60,17 @@ export default function ImageBlock({block}) {
                                                 </div>
                                             );
                                         })}
-                                        <div className="absolute z-10 text-white top-0 flex justify-center flex-col w-full items-center">
-                                            <h3>{item.title}</h3>
-                                            <p>{item.body}</p>
-                                            <TwoButtons
-                                                link={link}
-                                                label={item.linkHandle?.label}
-                                                linkSecondary={linkSecondary}
-                                                labelSecondary={item.linkHandle2?.label}
-                                            />
+                                        <div className="absolute z-10 text-white top-0 lg:gap-2 flex justify-center flex-col w-full items-center pt-8">
+                                            <h2 className="text-2xl lg:text-5xl capitalize">{item.title}</h2>
+                                            <p className="font-medium text-lg lg:text-xl underline underline-offset-5">{item.body}</p>
+                                            <div className="mt-4">
+                                                <TwoButtons
+                                                    link={link === "no-link" ? null : link}
+                                                    label={item.linkHandle?.label}
+                                                    linkSecondary={linkSecondary === "no-link" ? null : link}
+                                                    labelSecondary={item.linkHandle2?.label}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </CarouselItem>

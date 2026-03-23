@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button"
+
 
 export default function TwoButtons({
     link,
@@ -7,9 +9,9 @@ export default function TwoButtons({
     labelSecondary
 }) {
     return (
-        <div className="flex">
-            <Link href={link}>{label}</Link>
-            <Link href={linkSecondary}>{labelSecondary}</Link>
+        <div className="flex gap-2">
+            {link && (<Button asChild><Link href={link}>{label}</Link></Button>) }
+            {linkSecondary && <Button asChild variant="secondary"><Link href={linkSecondary}>{labelSecondary}</Link></Button> }
         </div>
     );
 }
