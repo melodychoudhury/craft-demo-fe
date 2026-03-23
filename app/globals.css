@@ -116,7 +116,6 @@ body {
   }
 }
 
-
 .rolec {
   --background: oklch(0.985 0 0);
 }
@@ -160,7 +159,7 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
   html {
     @apply font-sans;

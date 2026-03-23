@@ -3,6 +3,9 @@ fragment ImageBlock on imageblock_Entry {
           id
           typeHandle
 
+           toggle
+           toggle2
+
           image {
             url
             focalPoint
@@ -19,6 +22,7 @@ fragment ImageBlock on imageblock_Entry {
               title
               typeHandle
               body
+              body2
               linkHandle {
                     label
                     url
