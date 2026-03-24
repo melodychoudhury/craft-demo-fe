@@ -120,6 +120,18 @@ body {
   --background: oklch(0.985 0 0);
 }
 
+@utility counter-button1 {
+  @apply font-bold rounded-[3rem] cursor-pointer inline-block;
+}
+
+@utility counter-button2 {
+  @apply font-bold text-white rounded-[2rem] cursor-pointer inline-block;
+}
+
+@utility counter-button3 {
+  @apply font-bold uppercase rounded-[1rem] cursor-pointer inline-block;
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

@@ -45,7 +45,7 @@ export default function ImageBlock({block}) {
                             const imgList = item.image;
                         
                             return (
-                                <CarouselItem className={block.toggle ? "pl-4 basis-[80%] rounded-2xl" : "basis-full h-full pl-0 transition-opacity duration-1500 ease-in-out relative"}>
+                                <CarouselItem className={block.toggle ? "pl-4 basis-[80%] 2xl:basis-[40%] rounded-2xl" : "basis-full h-full pl-0 transition-opacity duration-1500 ease-in-out relative"}>
                                     <div className={`md:h-[500px] lg:h-[600px] bg-black dark-overlay w-full relative ${block.toggle ? 'rounded-2xl overflow-hidden h-[250px]' : "h-[300px]"}`} key={item.id ?? `sliderImage-${sliderIndex}`}>
                                         {imgList.map((img, imgIndex) => {
                                             return (
@@ -62,7 +62,7 @@ export default function ImageBlock({block}) {
                                             );
                                         })}
                                         {!block.toggle ? (
-                                            <div className="absolute z-10 text-white top-0 lg:gap-2 flex justify-center flex-col w-full items-center pt-8">
+                                            <div className="absolute z-[100] text-white top-0 lg:gap-2 flex justify-center flex-col w-full items-center p-4 lg:p-8 ">
                                                 {item.title && (<h2 className="text-2xl lg:text-5xl capitalize">{item.title}</h2>)}
                                                 {item.body && (<p className="font-medium text-lg lg:text-xl underline underline-offset-5">{item.body}</p>)}
                                                 <div className="mt-4">
@@ -74,11 +74,11 @@ export default function ImageBlock({block}) {
                                                     />
                                                 </div>
                                             </div>
-                                        ) : <div className="absolute z-10 text-white top-0 lg:gap-2 p-8 flex flex-col justify-between h-full">
-                                                {item.body2 && (<p className="text-lg">{item.body2}</p>)}
+                                        ) : <div className={`absolute z-[100] text-white top-0 lg:gap-2 p-4 lg:p-8 flex flex-col h-full ${item.body2 ? 'justify-between' : 'justify-end'}`}>
+                                                {item.body2 && (<p className="text-md lg:text-lg">{item.body2}</p>)}
                                                 <div>
-                                                    {item.title && (<h2 className="text-2xl lg:text-4xl capitalize">{item.title}</h2>)}
-                                                    {item.body && (<p className="font-medium text-lg">{item.body}</p>)}
+                                                    {item.title && (<h2 className="text-xl lg:text-4xl capitalize">{item.title}</h2>)}
+                                                    {item.body && (<p className="font-medium text-md lg:text-lg">{item.body}</p>)}
                                                     <div className="mt-4">
                                                         <TwoButtons
                                                             link={link === "no-link" ? null : link}

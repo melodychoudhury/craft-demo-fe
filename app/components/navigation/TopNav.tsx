@@ -122,7 +122,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
     <div ref={navRef} className="relative border-b bg-background">
       {/* START visabile nav bar */}
       <div
-        className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3"
+        className="mx-auto flex w-full container items-center justify-between px-4 py-3"
         //stops pending close
         onMouseEnter={clearCloseTimeout}
         //starts delayed close COMMENT OUT FOR DEV DEBUGGING

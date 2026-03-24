@@ -3,6 +3,8 @@
 import { useQuery } from "@apollo/client/react";
 import { GetHomeDocument } from "@/src/gql/graphql";
 import PageBuilder from "./components/PageBuilder/PageBuilder";
+import { CountTwo }  from "./components/countTwo";
+
 
 export default function Home() {
   const { error, data } = useQuery(GetHomeDocument, {
@@ -21,6 +23,7 @@ export default function Home() {
 
   return (
     <div>
+        <CountTwo />
         <p>{entry.body ? <h1>{entry.body}</h1> : null}</p>
         <PageBuilder blocks={blocks} />
     </div>

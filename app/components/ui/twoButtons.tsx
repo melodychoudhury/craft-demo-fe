@@ -10,15 +10,15 @@ export default function TwoButtons({
   variantSecondary = "secondary",
 }) {
   return (
-    <div className="flex gap-2">
+    <div className={` ${link && linkSecondary ? 'flex gap-2' : ''}`}>
       {link && label && (
-        <Button asChild variant={variant}>
+        <Button className="text-sm" asChild variant={variant}>
           <Link href={link}>{label}</Link>
         </Button>
       )}
 
       {linkSecondary && labelSecondary && (
-        <Button asChild variant={variantSecondary}>
+        <Button className="text-sm" asChild variant={variantSecondary}>
           <Link href={linkSecondary}>{labelSecondary}</Link>
         </Button>
       )}
