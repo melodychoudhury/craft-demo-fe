@@ -8,9 +8,9 @@ type CounterProps = {
 
 export function Counter({ label, onClick, size = 'default', backgroundColor, buttonStyleVersion }: CounterProps) {
     const sizes = {
-        default: "bg-[red] text-base p-4",
-        small: 'bg-[red] text-xs p-2',
-        large: 'bg-[red] text-lg p-6'
+        default: "bg-[red] text-base p-4 w-fit",
+        small: 'bg-[red] text-xs p-2 w-fit',
+        large: 'bg-[red] text-lg p-6 w-fit'
     }
     return (
         <>

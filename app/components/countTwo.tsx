@@ -1,15 +1,24 @@
 import { Counter } from "./counter";
 import { useState } from "react";
 
-export function CountTwo() {
+export type CountTwoProps = {
+  label?: string;
+  incrementBy?: number;
+  onClick?: () => void;
+  backgroundColor?: string;
+};
+
+export function CountTwo({ label = "increment", incrementBy = 1, onClick, backgroundColor }: CountTwoProps) {
     const [count, setCount] = useState(0)
     const handleCount = () => {
-        setCount(count + 1)
-    }
+        setCount(prevCount => prevCount + incrementBy);
+        onClick?.();
+    };
+
     return (
-        <>
+        <div className="flex flex-col">
             {count}
-            <Counter onClick={handleCount} label='increment' backgroundColor="pink" buttonStyleVersion="counter-button1" size="small" />
-        </>
+            <Counter onClick={handleCount} label={label} backgroundColor={backgroundColor} buttonStyleVersion="counter-button1" size="small" />
+        </div>
     )
 }
