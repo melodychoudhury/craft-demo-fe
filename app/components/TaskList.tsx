@@ -31,7 +31,11 @@ export default function TaskList() {
             (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
         );
         return filteredTasks;
-    });
+    })
+
+    const dispatch = useDispatch();
+
+    const pinTask = (value)
 
     const LoadingRow = (
         <div className="loading-item">
