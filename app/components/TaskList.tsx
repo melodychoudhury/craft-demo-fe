@@ -1,6 +1,7 @@
 import type { RootState, AppDispatch } from '../lib/store'
 import Task from '../../app/components/Task';
 import { useDispatch, useSelector } from 'react-redux';
+// selects the state from the store
 import {updateTaskState} from '../lib/store';
 
 import {
@@ -22,20 +23,34 @@ type TaskListProps = {
 
 export default function TaskList() {
     //get state from store
-    const tasks = useSelector ((state: RootState) => {
+    const tasks = useSelector((state: RootState) => {
         const tasksInOrder = [
-            ...state.taskbox.tasks.filter((t) => t.state === "TASK_PINNED"),
-            ...state.taskbox.tasks.filter((t) => t.state !== "TASK_PINNED"),
+            ...state.taskbox.tasks.filter((t) => t.state === 'TASK_PINNED'),
+            ...state.taskbox.tasks.filter((t) => t.state !== 'TASK_PINNED'),
         ];
-        const filteredTasks = tasksInOrder.filter (
-            (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
+        //remove archives
+        const filteredTasks = tasksInOrder.filter(
+        (t) => t.state === "TASK_INBOX" || t.state === 'TASK_PINNED'
         );
         return filteredTasks;
-    })
+    });
 
-    const dispatch = useDispatch();
+    //manages loading
+    const { status } = useSelector((state: RootState) => state.taskbox);
 
-    const pinTask = (value)
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    const pinTask = (value: string) => {
+        // We're dispatching the Pinned event back to our store
+        dispatch(updateTaskState({ id: value, newTaskState: 'TASK_PINNED' }));
+    };
+
+    const archiveTask = (value: string) => {
+    // We're dispatching the Archive event back to our store
+    dispatch(updateTaskState({ id: value, newTaskState: 'TASK_ARCHIVED' }));
+  };
+
 
     const LoadingRow = (
         <div className="loading-item">
@@ -46,7 +61,7 @@ export default function TaskList() {
         </div>
     );
 
-    if (loading) {
+    if (status === "loading") {
         return (
             <div className="list-items" data-testid="loading">
                 {LoadingRow}
@@ -71,7 +86,18 @@ export default function TaskList() {
         );
     }
 
-    
+    return (
+    <div className="list-items" data-testid="success" key="success">
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          task={task}
+          onPinTask={pinTask}
+          onArchiveTask={archiveTask}
+        />
+      ))}
+    </div>
+  );
 
     
 }

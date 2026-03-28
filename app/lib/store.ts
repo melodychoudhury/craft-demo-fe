@@ -1,49 +1,33 @@
-
-/* A simple redux store/actions/reducer implementation.
- * A true app would be more complex and separated into different files.
- */
-
 import { configureStore, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-type TaskData = {
+export type TaskData = {
   id: string;
   title: string;
   state: 'TASK_ARCHIVED' | 'TASK_INBOX' | 'TASK_PINNED';
 };
 
-interface TaskBoxState {
+export interface TaskBoxState {
   tasks: TaskData[];
   status: 'idle' | 'loading' | 'failed' | 'succeeded';
   error: string | null;
 }
 
-/*
- * The initial state of our store when the app loads.
- * Usually, you would fetch this from a server. Let's not worry about that now
- */
 const defaultTasks: TaskData[] = [
-  { id: '1', title: 'Something', state: 'TASK_INBOX' },
+  { id: '1', title: 'make sashimi', state: 'TASK_PINNED' },
   { id: '2', title: 'Something more', state: 'TASK_INBOX' },
-  { id: '3', title: 'Something else', state: 'TASK_INBOX' },
-  { id: '4', title: 'Something again', state: 'TASK_INBOX' },
-   { id: '5', title: 'chill', state: 'TASK_INBOX' },
+  { id: '3', title: 'Something else pin', state: 'TASK_PINNED' },
+  { id: '4', title: 'Something again pinny', state: 'TASK_PINNED' },
 ];
 
-const TaskBoxData: TaskBoxState = {
-  // tasks above
+const initialState: TaskBoxState = {
   tasks: defaultTasks,
   status: 'idle',
   error: null,
 };
 
-/*
- * The store is created here.
- * You can read more about Redux Toolkit's slices in the docs:
- * https://redux-toolkit.js.org/api/createSlice
- */
-const TasksSlice = createSlice({
+const tasksSlice = createSlice({
   name: 'taskbox',
-  initialState: TaskBoxData,
+  initialState,
   reducers: {
     updateTaskState: (
       state,
@@ -57,22 +41,54 @@ const TasksSlice = createSlice({
   },
 });
 
-// The actions contained in the slice are exported for usage in our components
-export const { updateTaskState } = TasksSlice.actions;
+export const { updateTaskState } = tasksSlice.actions;
 
-/*
- * Our app's store configuration goes here.
- * Read more about Redux's configureStore in the docs:
- * https://redux-toolkit.js.org/api/configureStore
- */
+export const makeStore = (preloadedState?: { taskbox: TaskBoxState }) =>
+  configureStore({
+    reducer: {
+      taskbox: tasksSlice.reducer,
+    },
+    preloadedState,
+  });
 
-const store = configureStore({
-  reducer: {
-    taskbox: TasksSlice.reducer,
+// main app store
+const store = makeStore();
+
+// storybook store states
+export const loadingState: { taskbox: TaskBoxState } = {
+  taskbox: {
+    tasks: [],
+    status: 'loading',
+    error: null,
   },
-});
+};
 
-// Define RootState and AppDispatch types
+export const emptyState: { taskbox: TaskBoxState } = {
+  taskbox: {
+    tasks: [],
+    status: 'idle',
+    error: null,
+  },
+};
+
+export const pinnedState: { taskbox: TaskBoxState } = {
+  taskbox: {
+    tasks: defaultTasks.map((task) =>
+      task.id === '4'
+        ? { ...task, state: 'TASK_PINNED' }
+        : task
+    ),
+    status: 'idle',
+    error: null,
+  },
+};
+
+// storybook store instances
+export const defaultStoryStore = makeStore();
+export const loadingStoryStore = makeStore(loadingState);
+export const emptyStoryStore = makeStore(emptyState);
+export const pinnedStoryStore = makeStore(pinnedState);
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

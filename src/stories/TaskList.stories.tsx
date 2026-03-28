@@ -1,62 +1,59 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Provider } from 'react-redux';
 
-import TaskList from "../../app/components/TaskList";
-
-import * as Task from './Task.stories';
+import TaskList from '../../app/components/TaskList';
+import {
+  defaultStoryStore,
+  loadingStoryStore,
+  emptyStoryStore,
+  pinnedStoryStore,
+} from '../../app/lib/store';
 
 const meta = {
-  component: TaskList,
   title: 'TaskList',
-  decorators: [(story) => <div style={{ margin: '3rem' }}>{story()}</div>],
-  tags: ["autodocs"],
-  args: {
-    ...Task.ActionsData,
-  },
+  component: TaskList,
+  tags: ['autodocs'],
 } satisfies Meta<typeof TaskList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    // Shaping the stories through args composition.
-    // The data was inherited from the Default story in Task.stories.tsx.
-    tasks: [
-      { ...Task.Default.args.task, id: '1', title: 'Task 1' },
-      { ...Task.Default.args.task, id: '2', title: 'Task 2' },
-      { ...Task.Default.args.task, id: '30', title: 'Task 3' },
-      { ...Task.Default.args.task, id: '4', title: 'Task 4' },
-      { ...Task.Default.args.task, id: '5', title: 'Task 5' },
-      { ...Task.Default.args.task, id: '60', title: 'Task 6' },
-    ],
-  },
+  decorators: [
+    (Story) => (
+      <Provider store={defaultStoryStore}>
+        <Story />
+      </Provider>
+    ),
+  ],
 };
-
-// with pinned tasks 
-
-export const WithPinnedTasks: Story = {
-    args: {
-        tasks: [
-            ...Default.args.tasks.slice(0,5),
-            {id: '6', title: 'Walk dog', state: 'TASK_PINNED'},
-            {id: '3', title: 'Feed cat', state: 'TASK_PINNED'},
-        ],
-    },
-};
-
-//loading
 
 export const Loading: Story = {
-    args: {
-        tasks: [],
-        loading: true
-    }
-}
+  decorators: [
+    (Story) => (
+      <Provider store={loadingStoryStore}>
+        <Story />
+      </Provider>
+    ),
+  ],
+};
 
-// no tasks 
-export const NoTasks: Story = {
-    args: {
-        tasks: [],
-        loading: false
-    }
-}
+export const Empty: Story = {
+  decorators: [
+    (Story) => (
+      <Provider store={emptyStoryStore}>
+        <Story />
+      </Provider>
+    ),
+  ],
+};
+
+export const WithPinnedTasks: Story = {
+  decorators: [
+    (Story) => (
+      <Provider store={pinnedStoryStore}>
+        <Story />
+      </Provider>
+    ),
+  ],
+};
