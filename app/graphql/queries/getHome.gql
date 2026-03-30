@@ -5,7 +5,7 @@ query GetHome($slug: [String]) {
   entry(section: "home", slug: $slug) {
     id
     title
-
+    
     ... on homeentry_Entry {
       body
 

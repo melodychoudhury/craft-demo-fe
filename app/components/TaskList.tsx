@@ -16,6 +16,7 @@ type TaskData = {
 
 type TaskListProps = {
     loading?: boolean;
+    failed?: boolean;
     tasks: TaskData[];
     onPinTask: (id:string) => void;
     onArchiveTask: (id:string) => void;
@@ -37,6 +38,7 @@ export default function TaskList() {
 
     //manages loading
     const { status } = useSelector((state: RootState) => state.taskbox);
+    
 
 
     const dispatch = useDispatch<AppDispatch>();
@@ -70,6 +72,14 @@ export default function TaskList() {
                 {LoadingRow}
                 {LoadingRow}
                 <div>Loading pls wait...</div>
+            </div>
+        );
+    }
+
+    if (status === "failed") {
+        return (
+            <div className="list-items" data-testid="failed">
+               This has failed go back to home
             </div>
         );
     }

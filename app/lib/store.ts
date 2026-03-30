@@ -63,6 +63,16 @@ export const loadingState: { taskbox: TaskBoxState } = {
   },
 };
 
+
+export const failedState: { taskbox: TaskBoxState } = {
+  taskbox: {
+    tasks: [],
+    status: 'failed',
+    error: null,
+  },
+};
+
+
 export const emptyState: { taskbox: TaskBoxState } = {
   taskbox: {
     tasks: [],
@@ -86,6 +96,7 @@ export const pinnedState: { taskbox: TaskBoxState } = {
 // storybook store instances
 export const defaultStoryStore = makeStore();
 export const loadingStoryStore = makeStore(loadingState);
+export const failedStoryStore = makeStore(failedState);
 export const emptyStoryStore = makeStore(emptyState);
 export const pinnedStoryStore = makeStore(pinnedState);
 

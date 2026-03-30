@@ -20,15 +20,34 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
+
+
+type NavImage = {
+  url: string;
+};
+
+type NavChild = {
+  title?: string;
+  id?: number | string;
+  linkHandle?: LinkHandle;
+  image?: NavImage[];
+  children?: NavChild[];
+};
+
 type NavItem = {
-  id?: string | number;
-  title: string;
-  linkHandle?: unknown;
-  children?: NavItem[];
+  title?: string;
+  id?: number | string;
+  linkHandle?: LinkHandle;
+  image?: NavImage[];
+  children?: NavChild[];
+};
+
+type TopNavProps = {
+  items: NavItem[];
 };
 
 //component accepts prop called items which is the NavItem structure
-export default function TopNav({ items = [] }: { items?: NavItem[] }) {
+export default function TopNav({ items }: TopNavProps) {
   //stores the key of the open state "" means nothing is open
   const [openItem, setOpenItem] = React.useState<string>("");
   // points to nav wrapper in the dom for clickoutside
@@ -141,7 +160,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
             <NavigationMenuList>
               {items.map((item, index) => {
                 //gets url string
-                const href = resolveHref(item.linkHandle);
+                const href = resolveHref(item.linkHandle) || "#";
                 // makes each item unique 
                 const key = String(item.id ?? `nav-${index}`);
                 // used key to check whether the item is the active open one
@@ -238,7 +257,7 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                 {imageChildren.map((child, childIndex) => {
                   const asset = child.image?.[0];
                   const link = child.linkHandle;
-                  const href = resolveHref(child.linkHandle);
+                  const href = resolveHref(child.linkHandle) || "#";
                   const childKey = child.id ?? `image-child-${childIndex}`;
 
                   if (!asset?.url) return null;
@@ -301,9 +320,12 @@ export default function TopNav({ items = [] }: { items?: NavItem[] }) {
                             //make key
                             const subChildKey = subChild.id ?? `link-child-${subChildIndex}`;
                             //make link
-                            const subLink = subChild.linkHandle.url || subChild.linkHandle;
+                            const subLink =
+                              typeof subChild.linkHandle === "string"
+                                ? subChild.linkHandle
+                                : subChild.linkHandle?.url;
 
-                            const href = resolveHref(subChild.linkHandle);
+                            const href = resolveHref(subChild.linkHandle) || "#";
 
                             return (
                               <li className="mt-1 underline-smooth w-fit" key={subChildKey}>

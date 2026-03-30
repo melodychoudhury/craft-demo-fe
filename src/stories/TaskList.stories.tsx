@@ -6,6 +6,7 @@ import {
   defaultStoryStore,
   loadingStoryStore,
   emptyStoryStore,
+  failedStoryStore,
   pinnedStoryStore,
 } from '../../app/lib/store';
 
@@ -32,6 +33,16 @@ export const Loading: Story = {
   decorators: [
     (Story) => (
       <Provider store={loadingStoryStore}>
+        <Story />
+      </Provider>
+    ),
+  ],
+};
+
+export const Failed: Story = {
+  decorators: [
+    (Story) => (
+      <Provider store={failedStoryStore}>
         <Story />
       </Provider>
     ),
