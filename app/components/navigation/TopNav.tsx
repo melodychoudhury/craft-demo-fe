@@ -44,12 +44,14 @@ type NavItem = {
 
 type TopNavProps = {
   items: NavItem[];
+  debugKeepOpen?: boolean;
+  defaultOpenItem?: string;
 };
 
 //component accepts prop called items which is the NavItem structure
-export default function TopNav({ items }: TopNavProps) {
+export default function TopNav({ items, debugKeepOpen = false, defaultOpenItem = "", }: TopNavProps) {
   //stores the key of the open state "" means nothing is open
-  const [openItem, setOpenItem] = React.useState<string>("");
+  const [openItem, setOpenItem] = React.useState<string>(defaultOpenItem);
   // points to nav wrapper in the dom for clickoutside
   const navRef = React.useRef<HTMLDivElement | null>(null);
   //stores a timer id for smoother hover
@@ -77,16 +79,20 @@ export default function TopNav({ items }: TopNavProps) {
   );
   // cancels any pending close and then sets a pause for the over stateto prevent glitching on the ui
   const closeMenu = React.useCallback(() => {
+    if (debugKeepOpen) return;
+
     clearCloseTimeout();
     closeTimeout.current = setTimeout(() => {
       setOpenItem("");
     }, 120);
-  }, [clearCloseTimeout]);
+  }, [clearCloseTimeout, debugKeepOpen]);
 // cancels any pending close, without the timeout for events that don't need the hover like closing the X icon, drop down link, click outside
   const closeMenuImmediately = React.useCallback(() => {
+    if (debugKeepOpen) return;
+    
     clearCloseTimeout();
     setOpenItem("");
-  }, [clearCloseTimeout]);
+  }, [clearCloseTimeout, debugKeepOpen]);
 
   //start of outside click and escape handling
   React.useEffect(() => {

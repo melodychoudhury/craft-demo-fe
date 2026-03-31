@@ -1,140 +1,93 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { MockedProvider } from "@apollo/client/testing/react";
 import TopNavClient from "@/app/components/navigation/TopNavClient";
-import { GetNavDocument } from "@/src/gql/graphql";
+import { defaultMocks } from "../mocks/nav/default.mocks";
+import { singleLinkMocks } from "../mocks/nav/singleLink.mocks";
+import { HeadingLinkMocks } from "../mocks/nav/HeadingLink.mocks";
+import { imagesLinksMocks } from "../mocks/nav/ImagesLinks.mocks";
+import { ImagesOnlyMocks } from "../mocks/nav/ImagesOnly.mocks";
 
-const mocks = [
-  {
-    request: {
-      query: GetNavDocument,
-      variables: { section: ["topNav"] },
-    },
-    result: {
-      data: {
-        entries: [
-          {
-            id: "1",
-            title: "Home",
-            linkHandle: {
-              title: "Home",
-              label: "Home",
-              url: "/",
-            },
-            children: [],
-          },
-          {
-            id: "2",
-            title: "Shop",
-            linkHandle: {
-              title: "Shop",
-              label: "Shop",
-              url: "/",
-            },
-            children: [
-              {
-                id: "21",
-                title: "Design",
-                linkHandle: {
-                  title: "Design",
-                  label: "Design",
-                  url: "/design",
-                },
-                image: [],
-                children: [],
-              },
-              {
-                id: "22",
-                title: "Collections",
-                linkHandle: {
-                  title: "Collections",
-                  label: "Collections",
-                  url: "/collections",
-                },
-                image: [
-                  {
-                    id: "201",
-                    title: "Collections image",
-                    url: "/storybook/collections.jpg",
-                    alt: "Collections image",
-                    width: 300,
-                    focalPoint: null,
-                  },
-                ],
-                children: [],
-              },
-              {
-                id: "23",
-                title: "By Room",
-                image: [],
-                children: [
-                  {
-                    id: "231",
-                    title: "Living Room",
-                    linkHandle: {
-                      title: "Living Room",
-                      label: "Living Room",
-                      url: "/living-room",
-                    },
-                    image: [],
-                    children: [],
-                  },
-                  {
-                    id: "232",
-                    title: "Bedroom",
-                    linkHandle: {
-                      title: "Bedroom",
-                      label: "Bedroom",
-                      url: "/bedroom",
-                    },
-                    image: [],
-                    children: [],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: "3",
-            title: "About",
-            linkHandle: {
-              title: "About",
-              label: "About",
-              url: "/about",
-            },
-            children: [
-                {
-                    id: "231",
-                    title: "Living Room",
-                    linkHandle: {
-                      title: "Living Room",
-                      label: "Living Room",
-                      url: "/living-room",
-                    },
-                    image: [],
-                    children: [],
-                  }
-            ],
-          },
-        ],
-      },
-    },
-  },
-];
 
-const meta: Meta<typeof TopNavClient> = {
+
+const meta = {
   title: "Navigation/TopNavClient",
   component: TopNavClient,
+  tags: ['autodocs'],
+  argTypes: {
+    debugKeepOpen: {
+      name: "keep menu open",
+      control: { type: "boolean" },
+    },
+    defaultOpenItem: {
+      name: "Developer note: edit ID, this is the active id on the nav, whatever nav item has it will appear on the nav when they are matched",
+      control: { type: "text" },
+    },
+  },
   decorators: [
-    (Story) => (
-      <MockedProvider mocks={mocks} addTypename={false}>
+    (Story, context) => (
+      <MockedProvider mocks={context.parameters.mocks ? context.parameters.mocks : defaultMocks}>
         <Story />
       </MockedProvider>
     ),
   ],
-};
+} satisfies Meta<typeof TopNavClient>;
 
 export default meta;
 
-type Story = StoryObj<typeof TopNavClient>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: {
+    mocks: defaultMocks,
+  },
+  args: {
+    debugKeepOpen: false,
+    defaultOpenItem: "1",
+  },
+};
+
+export const Singlelink: Story = {
+  parameters: {
+    mocks: singleLinkMocks,
+  },
+  args: {
+    debugKeepOpen: true,
+    defaultOpenItem: "1",
+  },
+};
+
+export const HeadingLink: Story = {
+  parameters: {
+    mocks: HeadingLinkMocks,
+  },
+  args: {
+    debugKeepOpen: true,
+    defaultOpenItem: "1",
+  },
+};
+
+export const ImagesLinks: Story = {
+  parameters: {
+    mocks: imagesLinksMocks,
+  },
+  args: {
+    debugKeepOpen: true,
+    defaultOpenItem: "1",
+  },
+};
+
+export const ImagesOnly: Story = {
+  parameters: {
+    mocks: ImagesOnlyMocks,
+    docs: {
+      description: {
+        story: "This story the nav with images only.",
+      },
+    },
+  },
+  args: {
+    debugKeepOpen: true,
+    defaultOpenItem: "1",
+  },
+};
+

@@ -18,7 +18,6 @@ import {
 
 export default function ImageBlock({block}) {
      const imageSlider = block.imageSlider?.filter((item) => item.image?.length) ?? [];
-     console.log(block.toggle);
      
          //for carousel dots
          const [api, setApi] = React.useState<CarouselApi>()
